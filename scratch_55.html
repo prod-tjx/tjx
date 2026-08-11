@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How TFAs Contribute</title>
+<style>
+  :root{
+    --bg1:#080b1f; --bg2:#161c3a;
+    --ink:#fff; --muted:#8b95b8; --dim:#6b7494;
+    --blue:#5b8def; --purple:#a78bfa; --green:#34d399; --amber:#fbbf24;
+    --card:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.10);
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+       background:
+         radial-gradient(900px 500px at 10% 15%, rgba(91,141,239,0.18), transparent 60%),
+         radial-gradient(900px 500px at 90% 85%, rgba(52,211,153,0.14), transparent 60%),
+         linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+       color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+       align-items:center; justify-content:center; padding:48px 32px;}
+
+  .eyebrow{display:inline-flex; align-items:center; gap:10px; padding:6px 14px;
+           border:1px solid rgba(167,139,250,0.4); border-radius:999px;
+           color:var(--purple); font-size:12px; font-weight:600; letter-spacing:1.5px;
+           text-transform:uppercase; margin-bottom:18px;
+           background:rgba(167,139,250,0.08);}
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--purple);
+                box-shadow:0 0 10px var(--purple);}
+
+  /* ─── Header row with bot badge on the right ─── */
+  .header{display:flex; align-items:center; justify-content:space-between;
+          width:100%; max-width:1500px; gap:40px; margin-bottom:48px;}
+  .header-text{flex:1;}
+  h1{font-size:54px; margin:0 0 10px; font-weight:700; letter-spacing:-1.2px;
+     background:linear-gradient(135deg,#fff 30%, #c8cde0 100%);
+     -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+  .sub{color:var(--muted); font-size:18px; max-width:780px; line-height:1.5;}
+  .sub b{color:#fff; font-weight:600;}
+
+  /* Bot badge — robot icon with "Auto Trader TFA Bot" sub-badge */
+  .bot{position:relative; flex-shrink:0; width:200px; display:flex; flex-direction:column;
+       align-items:center;}
+  .bot-icon{width:120px; height:120px; border-radius:28px;
+            background:linear-gradient(135deg, rgba(91,141,239,0.25), rgba(167,139,250,0.25));
+            border:2px solid rgba(167,139,250,0.5);
+            display:flex; align-items:center; justify-content:center;
+            box-shadow:0 0 50px rgba(167,139,250,0.35), inset 0 0 30px rgba(91,141,239,0.15);
+            position:relative;}
+  .bot-icon svg{width:72px; height:72px;}
+  .bot-icon::after{content:""; position:absolute; top:-4px; right:-4px;
+                   width:18px; height:18px; border-radius:50%;
+                   background:var(--green); border:3px solid var(--bg2);
+                   box-shadow:0 0 12px var(--green);}
+  .bot-sub{margin-top:-14px; padding:8px 16px; border-radius:999px;
+           background:linear-gradient(135deg, var(--blue), var(--purple));
+           color:#fff; font-weight:700; font-size:12px; letter-spacing:.5px;
+           white-space:nowrap; box-shadow:0 6px 20px rgba(91,141,239,0.4);
+           border:2px solid rgba(255,255,255,0.15);}
+  .bot-tag{margin-top:10px; font-family:var(--mono); font-size:10.5px;
+           color:var(--dim); letter-spacing:1.5px; text-transform:uppercase;}
+
+  /* ─── Contribution flow ─── */
+  .flow{display:grid; grid-template-columns:repeat(7, auto); align-items:stretch;
+        gap:0 6px; max-width:1500px; width:100%; padding:8px;}
+  .node{position:relative; background:var(--card); border:1px solid var(--border);
+        border-radius:16px; padding:22px 20px 18px; width:230px; min-height:200px;
+        backdrop-filter:blur(14px); display:flex; flex-direction:column;
+        transition:transform .25s ease;}
+  .node:hover{transform:translateY(-4px);}
+  .node::before{content:""; position:absolute; top:0; left:18px; right:18px; height:3px;
+                border-radius:0 0 3px 3px;}
+  .node .num{font-family:var(--mono); font-size:11px; color:var(--dim); letter-spacing:1.5px;}
+  .node .icon{font-size:28px; margin:6px 0 10px; line-height:1;}
+  .node .label{font-weight:700; font-size:16px; line-height:1.3;}
+  .node .det{color:var(--muted); font-size:12.5px; margin-top:8px; line-height:1.5;}
+  .node .det b{color:#fff; font-weight:600;}
+  .node .det code{font-family:var(--mono); font-size:11.5px; color:var(--blue);
+                  background:rgba(91,141,239,0.1); padding:1px 6px; border-radius:4px;}
+  .node .pill{margin-top:auto; align-self:flex-start; font-size:10.5px; font-weight:600;
+              padding:3px 9px; border-radius:999px; letter-spacing:.5px; text-transform:uppercase;}
+
+  .s1::before{background:var(--blue);} .s1{box-shadow:0 8px 28px rgba(91,141,239,0.18);}
+  .s1 .pill{background:rgba(91,141,239,0.15); color:var(--blue); border:1px solid rgba(91,141,239,0.4);}
+  .s2::before{background:var(--amber);} .s2{box-shadow:0 8px 28px rgba(251,191,36,0.18);}
+  .s2 .pill{background:rgba(251,191,36,0.15); color:var(--amber); border:1px solid rgba(251,191,36,0.4);}
+  .s3::before{background:var(--purple);} .s3{box-shadow:0 8px 28px rgba(167,139,250,0.18);}
+  .s3 .pill{background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid rgba(167,139,250,0.4);}
+  .s4::before{background:var(--green);} .s4{box-shadow:0 8px 28px rgba(52,211,153,0.18);}
+  .s4 .pill{background:rgba(52,211,153,0.15); color:var(--green); border:1px solid rgba(52,211,153,0.4);}
+
+  .arrow{display:flex; align-items:center; justify-content:center; width:28px;}
+  .arrow svg{width:22px; height:22px;}
+  .a1 svg path{stroke:var(--blue);}
+  .a2 svg path{stroke:var(--amber);}
+  .a3 svg path{stroke:var(--purple);}
+
+  /* Impact callout */
+  .impact{margin-top:36px; max-width:1500px; width:100%;
+          background:linear-gradient(90deg, rgba(52,211,153,0.12), rgba(91,141,239,0.08));
+          border:1px solid rgba(52,211,153,0.35); border-radius:14px;
+          padding:18px 24px; display:flex; align-items:center; gap:18px;}
+  .impact .ico{font-size:30px;}
+  .impact .txt{font-size:15px; line-height:1.55;}
+  .impact b{color:var(--green);}
+
+  .footer{margin-top:32px; color:var(--dim); font-size:13px; font-family:var(--mono);}
+</style>
+</head>
+<body>
+
+  <span class="eyebrow"><span class="dot"></span>Open Contribution Model</span>
+
+  <div class="header">
+    <div class="header-text">
+      <h1>How TFAs Contribute</h1>
+      <div class="sub">Any TFA can ship a new trader-hunting pattern. <b>Backtest it to 99%+ precision, open a PR, and the bot takes it from there</b> — your pattern starts auto-actioning orders without touching a line of pipeline code.</div>
+    </div>
+
+    <div class="bot">
+      <div class="bot-icon">
+        <!-- Robot SVG -->
+        <svg viewBox="0 0 64 64" fill="none">
+          <rect x="14" y="18" width="36" height="30" rx="6" stroke="#fff" stroke-width="2.5" fill="rgba(91,141,239,0.2)"/>
+          <circle cx="24" cy="32" r="3.5" fill="#5b8def"/>
+          <circle cx="40" cy="32" r="3.5" fill="#5b8def"/>
+          <path d="M24 40 Q32 44 40 40" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <line x1="32" y1="18" x2="32" y2="10" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="32" cy="8" r="3" fill="#34d399"/>
+          <rect x="8" y="28" width="6" height="14" rx="2" stroke="#fff" stroke-width="2" fill="none"/>
+          <rect x="50" y="28" width="6" height="14" rx="2" stroke="#fff" stroke-width="2" fill="none"/>
+          <rect x="20" y="48" width="8" height="6" rx="1.5" stroke="#fff" stroke-width="2" fill="none"/>
+          <rect x="36" y="48" width="8" height="6" rx="1.5" stroke="#fff" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div class="bot-sub">Auto Trader TFA Bot</div>
+      <div class="bot-tag">v1.0 · LIVE</div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="node s1">
+      <div class="num">01</div>
+      <div class="icon">📓</div>
+      <div class="label">Prototype in Jupyter</div>
+      <div class="det">Draft your pattern as a Jupyter notebook using the <b>aros-innovation</b> environment. Iterate against real trader frames.</div>
+      <div class="pill">Notebook</div>
+    </div>
+    <div class="arrow a1"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s2">
+      <div class="num">02</div>
+      <div class="icon">🎯</div>
+      <div class="label">Backtest to 99%</div>
+      <div class="det">Validate against historical orders using the shared backtest harness. <b>Precision must clear the 99% bar</b> before promotion.</div>
+      <div class="pill">≥99% precision</div>
+    </div>
+    <div class="arrow a2"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s3">
+      <div class="num">03</div>
+      <div class="icon">🔀</div>
+      <div class="label">Submit a PR</div>
+      <div class="det">Drop the <code>.sql</code> into <code>active_queries/</code> and open a PR against the AutoCT repo. Reviewer signs off.</div>
+      <div class="pill">PR · 1 file</div>
+    </div>
+    <div class="arrow a3"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s4">
+      <div class="num">04</div>
+      <div class="icon">🤖</div>
+      <div class="label">Bot Takes Over</div>
+      <div class="det">Auto Trader TFA Bot picks it up on the next run — <b>frames, dedupes, actions via ACM, posts to Slack</b>. Zero ops work.</div>
+      <div class="pill">Live next run</div>
+    </div>
+  </div>
+
+  <div class="impact">
+    <div class="ico">⚡</div>
+    <div class="txt">
+      <b>Your pattern → measurable impact.</b> Every accepted pattern compounds the bot's coverage — more orders auto-confirmed, more analyst hours redirected from review files to net-new investigation. <b>Contributor credit is logged per pattern in the Slack summary and results table.</b>
+    </div>
+  </div>
+
+  <div class="footer">Contribute: sds-fulfillment-tfa/tree/tjx-AutoCT/active_queries · Questions: tjx@apple.com</div>
+
+</body>
+</html>

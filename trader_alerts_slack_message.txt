@@ -1,0 +1,10 @@
+🚨 Trader Alerts Results (AD HOC TASK)
+━━━━━━━━━━━━━━━━━━━━━━
+📋 Scoped to 8391 ad hoc orders
+📂 Source: trader_tfa_review_frame_vw
+
+✅ No pattern matches found for these orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+📊 Total: 0 orders
+⏱️ Runtime: 371.1s

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>What I Learned from Python · TFA Lightning Talk</title>
+<style>
+  :root {
+    --bg: #0a0d14;
+    --bg-2: #0f1320;
+    --panel: #141926;
+    --ink: #eef1f7;
+    --ink-dim: #c5cbd9;
+    --muted: #8b94a8;
+    --line: #232a3d;
+    --blue: #5fa8ff;
+    --green: #6ee7b7;
+    --amber: #f5b86b;
+    --pink: #ff8ab8;
+    --red: #ff7a7a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(1400px 800px at 85% -10%, #1c2540 0%, transparent 55%),
+      radial-gradient(1100px 700px at -10% 110%, #1a2f2a 0%, transparent 55%),
+      var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .slide {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 56px 64px 64px;
+  }
+
+  /* ─── Header ─── */
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+  }
+  h1 {
+    font-size: 56px;
+    line-height: 1.05;
+    margin: 0 0 18px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    background: linear-gradient(180deg, #ffffff 0%, #b9c2d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .lede {
+    color: var(--ink-dim);
+    font-size: 19px;
+    max-width: 980px;
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .meta-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .meta-row span {
+    padding: 5px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  /* ─── Section (each = one Keynote slide) ─── */
+  .section {
+    margin-bottom: 64px;
+    padding: 32px;
+    background: rgba(255,255,255,0.015);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-num {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  .section-title {
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .section-tag {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 5px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .tag-blue   { color: var(--blue);  border-color: rgba(95,168,255,0.4); }
+  .tag-amber  { color: var(--amber); border-color: rgba(245,184,107,0.4); }
+  .tag-pink   { color: var(--pink);  border-color: rgba(255,138,184,0.4); }
+
+  /* ─── Three-up content ─── */
+  .triptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .block {
+    background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .block h4 {
+    margin: 0 0 12px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .block h4::before {
+    content: "";
+    width: 5px; height: 5px; border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+  .block.material h4 { color: var(--blue); }
+  .block.applied  h4 { color: var(--amber); }
+  .block.result   h4 { color: var(--green); }
+  .block p {
+    margin: 0 0 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+  }
+  .block ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-dim);
+  }
+  .block ul li { margin-bottom: 6px; }
+  .block b { color: var(--ink); }
+  .metric {
+    display: inline-block;
+    margin: 8px 6px 0 0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(110,231,183,0.1);
+    color: var(--green);
+    font-size: 12.5px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    border: 1px solid rgba(110,231,183,0.25);
+  }
+
+  /* ─── Code blocks ─── */
+  .code-wrap {
+    margin-top: 22px;
+    background: #07090f;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    background: #0d1119;
+    border-bottom: 1px solid var(--line);
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .code-header .lights { display: flex; gap: 6px; }
+  .code-header .lights span {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #2b3144;
+  }
+  .code-header .label { color: var(--ink-dim); }
+  pre {
+    margin: 0;
+    padding: 18px 20px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #d6dcec;
+    overflow-x: auto;
+  }
+  .kw { color: #c792ea; }
+  .str { color: #c3e88d; }
+  .com { color: #6a7491; font-style: italic; }
+  .fn  { color: #82aaff; }
+  .num { color: #f78c6c; }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .compare .code-header.bad  { color: var(--red); }
+  .compare .code-header.good { color: var(--green); }
+
+  /* ─── Closing ─── */
+  .takeaway {
+    margin-top: 12px;
+    background: linear-gradient(135deg, rgba(95,168,255,0.10), rgba(110,231,183,0.08));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .takeaway .icon { font-size: 44px; line-height: 1; }
+  .takeaway h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+  }
+  .takeaway p {
+    margin: 0;
+    color: var(--ink-dim);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .takeaway b { color: var(--ink); }
+
+  .footer {
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  code {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 0.92em;
+    background: rgba(255,255,255,0.05);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: #cfd6e4;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+
+    <!-- ─── Header ─── -->
+    <div class="eyebrow">
+      <span class="dot"></span>
+      LIGHTNING TALK · WHAT I LEARNED FROM PYTHON
+    </div>
+    <h1>From writing a script<br/>to shipping a system.</h1>
+    <p class="lede">
+      Three lessons from the TFA Python Accelerator that I used to build
+      the Trader Hunting + AutoCT pipelines this quarter.
+    </p>
+    <div class="meta-row">
+      <span>Course: TFA Python Accelerator</span>
+      <span>Project: Trader Hunting + AutoCT</span>
+      <span>DRI: tjx@apple.com</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 1                                         -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 01</div>
+        <h2 class="section-title">Use Pandas to combine and clean data from many sources</h2>
+        <div class="section-tag tag-blue">MODULES 2 &amp; 3</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>What the course taught</h4>
+          <p>Pandas gives you a spreadsheet you can control with code. The key moves:</p>
+          <ul>
+            <li><b>concat</b> &mdash; stack tables on top of each other</li>
+            <li><b>drop_duplicates</b> &mdash; remove repeated rows</li>
+            <li><b>groupby</b> &mdash; group rows by a column</li>
+            <li>Filtering with simple true/false rules</li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I used it</h4>
+          <p>My pipeline runs about 15 different SQL queries, each looking for a different type of suspicious order. Many orders show up in more than one query.</p>
+          <p>I stack all the results into one big table, drop any order that appears more than once, and save the clean list back to Snowflake.</p>
+        </div>
+
+        <div class="block result">
+          <h4>What it produced</h4>
+          <p>One clean table of unique orders, ready for the next step in the pipeline to act on.</p>
+          <span class="metric">15 queries &rarr; 1 table</span>
+          <span class="metric">0 duplicate orders</span>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="label">Combining results from many queries into one clean table</div>
+          <div>Python</div>
+        </div>
+<pre><span class="com"># Run each query and collect the results in a list</span>
+all_results = []
+<span class="kw">for</span> query <span class="kw">in</span> sql_files:
+    df = run_query(query)
+    <span class="kw">if not</span> df.empty:
+        all_results.append(df)
+
+<span class="com"># Stack them, remove duplicates, save to Snowflake</span>
+combined = pd.concat(all_results)
+combined = combined.drop_duplicates(subset=[<span class="str">"order_id"</span>])
+write_to_snowflake(combined)</pre>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 2                                         -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 02</div>
+        <h2 class="section-title">Write code other people (and future-you) can actually read</h2>
+        <div class="section-tag tag-amber">MODULE 6</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>What the course taught</h4>
+          <ul>
+            <li><b>One function = one job</b> &mdash; small pieces, not giant blocks</li>
+            <li><b>Put settings at the top</b> &mdash; change in one place</li>
+            <li><b>Don't hard-code file paths</b> &mdash; let the script find them automatically</li>
+            <li><b>Write a clear summary</b> at the top of every file</li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I used it</h4>
+          <p>I broke my pipeline into small named pieces, each doing one thing: read the SQL, run it, clean the results, save them, send the Slack update.</p>
+          <p>All the table names and settings live in a single block at the top, so anyone can update them without hunting through the code.</p>
+        </div>
+
+        <div class="block result">
+          <h4>What it produced</h4>
+          <p>Adding a <b>new fraud pattern is now a one-file change</b>: drop a SQL file into the folder. No Python changes. No code review of the pipeline itself.</p>
+          <span class="metric">+1 pattern = +1 file</span>
+          <span class="metric">0 deploys needed</span>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="code-wrap">
+          <div class="code-header">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="label bad">BEFORE</div>
+            <div>v0.1</div>
+          </div>
+<pre><span class="com"># File paths break when run from a different folder</span>
+QUERY_DIR = <span class="str">"./active_queries"</span>
+
+<span class="com"># Same table name typed 9 times — easy to mistype</span>
+run_query(<span class="str">"INSERT INTO long.table.name ..."</span>)
+run_query(<span class="str">"TRUNCATE long.table.name ..."</span>)
+
+<span class="com"># One huge function doing everything</span>
+<span class="kw">def</span> <span class="fn">main</span>():
+    <span class="com"># 300 lines of mixed logic...</span>
+    ...</pre>
+        </div>
+
+        <div class="code-wrap">
+          <div class="code-header">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="label good">AFTER</div>
+            <div>v1.0</div>
+          </div>
+<pre><span class="com"># Script finds its own folder — runs anywhere</span>
+QUERY_DIR = os.path.join(SCRIPT_DIR, <span class="str">"active_queries"</span>)
+
+<span class="com"># Names defined once, used everywhere</span>
+RESULTS_TABLE = <span class="str">"my_schema.results"</span>
+LOGGING_TABLE = <span class="str">"my_schema.log"</span>
+
+<span class="com"># main() reads like a table of contents</span>
+<span class="kw">def</span> <span class="fn">main</span>():
+    setup_tables()
+    run_all_queries()
+    save_results()
+    send_slack_update()</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 3                                         -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 03</div>
+        <h2 class="section-title">Make your script safe to run on a schedule, with no one watching</h2>
+        <div class="section-tag tag-pink">MODULE 7</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>What the course taught</h4>
+          <ul>
+            <li>Keep <b>passwords out of code</b> &mdash; read them from the environment</li>
+            <li><b>Split big jobs into batches</b> so they don't time out</li>
+            <li><b>Handle the "nothing to do" case</b> without crashing</li>
+            <li><b>Notify on success, stay quiet on empty, fail loudly on errors</b></li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I used it</h4>
+          <p>My AutoCT script runs on Jenkins every few hours. It pulls the password from a Jenkins secret, asks ACM to confirm orders in chunks of 500, and posts a green Slack message only when it actually does something.</p>
+          <p>If there's no work to do, it stays silent. If something breaks, it raises a clear error.</p>
+        </div>
+
+        <div class="block result">
+          <h4>What it produced</h4>
+          <p>A hands-off job that confirms suspicious orders automatically, with a full audit trail in ACM for every action.</p>
+          <span class="metric">500 orders / batch</span>
+          <span class="metric">0 manual clicks</span>
+          <span class="metric">Every action traceable</span>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="label">Four habits from Module 7, all in one script</div>
+          <div>Python</div>
+        </div>
+<pre><span class="com"># 1. Read the password from the environment, never the code</span>
+password = os.environ.get(<span class="str">"APP_PASSWORD"</span>)
+<span class="kw">if not</span> password:
+    <span class="kw">raise</span> <span class="fn">RuntimeError</span>(<span class="str">"APP_PASSWORD not set"</span>)
+
+<span class="com"># 2. Handle the empty case gracefully</span>
+<span class="kw">if</span> df.empty:
+    log.info(<span class="str">"Nothing to do — exiting"</span>)
+    <span class="kw">return</span>
+
+<span class="com"># 3. Process in batches so we don't hit API limits</span>
+<span class="kw">for</span> batch <span class="kw">in</span> chunks(orders, size=<span class="num">500</span>):
+    confirm_orders(batch)
+
+<span class="com"># 4. Tell Slack only when we actually did something</span>
+<span class="kw">if</span> total_actioned &gt; <span class="num">0</span>:
+    post_to_slack(<span class="fn">f</span><span class="str">"Confirmed {total_actioned} orders"</span>)</pre>
+      </div>
+    </div>
+
+    <!-- ─── Closing takeaway ─── -->
+    <div class="takeaway">
+      <div class="icon">🎯</div>
+      <div>
+        <h3>The biggest shift</h3>
+        <p>
+          Before the course, I wrote Python to <b>get an answer once</b>.
+          After the course, I write Python to <b>build something that keeps working without me</b>.
+          The difference isn't the language &mdash; it's the habits.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>DRI: tjx@apple.com</div>
+      <div>TFA Python Accelerator · Lightning Talk</div>
+    </div>
+
+  </div>
+</body>
+</html>

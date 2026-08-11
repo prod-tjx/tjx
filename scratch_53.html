@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>How AutoCT Works</title>
+<style>
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+         background:linear-gradient(135deg,#0a0e27 0%,#1a1f3a 100%); color:#fff;
+         min-height:100vh; padding:48px 32px; display:flex; flex-direction:column; align-items:center; }
+  h1 { font-size:42px; margin:0 0 8px; text-align:center; }
+  .sub { color:#8b95b8; margin-bottom:40px; font-size:16px; text-align:center; }
+
+  .flow-wrap { width:100%; max-width:1500px; display:flex; align-items:stretch; gap:24px; }
+
+  .flow { flex:1; display:grid; grid-template-columns:repeat(6, 1fr); gap:14px; align-items:stretch; position:relative; }
+
+  .stage { position:relative; padding:18px 16px 16px; background:rgba(10,14,39,0.92);
+           border-radius:12px; border:1px solid rgba(255,255,255,0.12);
+           backdrop-filter:blur(10px); display:flex; flex-direction:column; min-height:170px; }
+  .stage .lbl { font-size:11px; letter-spacing:1px; color:#8b95b8; font-weight:600; text-transform:uppercase; }
+  .stage .ttl { font-size:15px; font-weight:700; margin-top:4px; }
+  .stage .det { font-size:12px; color:#c8cde0; margin-top:8px; line-height:1.45; }
+
+  /* Color top-border per phase: blue=detect, purple=enrich, green=action */
+  .s1, .s2 { border-top:3px solid #5b8def; }
+  .s3, .s4 { border-top:3px solid #a78bfa; }
+  .s5, .s6 { border-top:3px solid #34d399; }
+
+  /* Chevron arrows between cards (skip after the last) */
+  .stage:not(:last-child)::after {
+    content:""; position:absolute; top:50%; right:-19px; transform:translateY(-50%);
+    width:0; height:0; border-left:10px solid #5b8def;
+    border-top:8px solid transparent; border-bottom:8px solid transparent; z-index:4;
+    filter: drop-shadow(0 0 4px rgba(91,141,239,0.4));
+  }
+  .s2::after { border-left-color:#a78bfa; filter: drop-shadow(0 0 4px rgba(167,139,250,0.4)); }
+  .s3::after, .s4::after { border-left-color:#a78bfa; filter: drop-shadow(0 0 4px rgba(167,139,250,0.4)); }
+  .s4::after { border-left-color:#34d399; filter: drop-shadow(0 0 4px rgba(52,211,153,0.4)); }
+  .s5::after { border-left-color:#34d399; filter: drop-shadow(0 0 4px rgba(52,211,153,0.4)); }
+
+  /* Right-side runtime callout */
+  .runtime { width:200px; border-radius:14px;
+             background:radial-gradient(circle at top left,#1a1f3a,#0a0e27);
+             border:2px solid rgba(91,141,239,0.4);
+             box-shadow:0 0 60px rgba(91,141,239,0.25);
+             display:flex; flex-direction:column; align-items:center; justify-content:center;
+             padding:24px 16px; text-align:center; }
+  .runtime .big { font-size:34px; font-weight:800;
+                  background:linear-gradient(135deg,#5b8def,#a78bfa);
+                  -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .runtime .small { color:#8b95b8; font-size:12.5px; margin-top:8px; line-height:1.4; }
+
+  /* Phase labels under the flow */
+  .phases { width:100%; max-width:1500px; display:grid;
+            grid-template-columns:2fr 2fr 2fr 224px; gap:14px; margin-top:18px; padding:0 2px; }
+  .phase { font-size:11px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;
+           text-align:center; padding:6px 0; border-radius:6px; }
+  .phase.detect { color:#5b8def; background:rgba(91,141,239,0.08); }
+  .phase.enrich { color:#a78bfa; background:rgba(167,139,250,0.08); }
+  .phase.action { color:#34d399; background:rgba(52,211,153,0.08); }
+  .phase.spacer { visibility:hidden; }
+
+  @media (max-width: 1200px) {
+    .flow-wrap { flex-direction:column; }
+    .runtime { width:auto; flex-direction:row; gap:16px; padding:18px 24px; }
+    .runtime .small { margin-top:0; text-align:left; }
+    .phases { grid-template-columns:1fr 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+  <h1>The Life of an Order</h1>
+  <div class="sub">From raw event in the trader-hunt frame to confirmed disposition in ACM</div>
+
+  <div class="flow-wrap">
+    <div class="flow">
+      <div class="stage s1"><div class="lbl">01 · Ingest</div><div class="ttl">Lands in Frame</div><div class="det">Order enters trader_tfa_traderhunt_frame within 5-day window</div></div>
+      <div class="stage s2"><div class="lbl">02 · Filter</div><div class="ttl">FF Exclusion</div><div class="det">JOIN against freight-forwarder log; known FFs drop out</div></div>
+      <div class="stage s3"><div class="lbl">03 · Match</div><div class="ttl">Pattern Hit</div><div class="det">Order satisfies one or more SQL patterns from active_queries/</div></div>
+      <div class="stage s4"><div class="lbl">04 · Enrich</div><div class="ttl">Full Row Joined</div><div class="det">50+ columns attached, deduped on order_identifier</div></div>
+      <div class="stage s5"><div class="lbl">05 · Queue</div><div class="ttl">Backlog Eligible</div><div class="det">TH-only, ASO ST-blocked, no prior D68 action</div></div>
+      <div class="stage s6"><div class="lbl">06 · Action</div><div class="ttl">TRADERCONFIRM</div><div class="det">ACM A3 mass-action with per-pattern case note</div></div>
+    </div>
+
+    <div class="runtime">
+      <div class="big">~2m 30s</div>
+      <div class="small">end-to-end<br/>find → action → notify</div>
+    </div>
+  </div>
+
+  <div class="phases">
+    <div class="phase detect">Detect</div>
+    <div class="phase enrich">Enrich &amp; Score</div>
+    <div class="phase action">Action &amp; Notify</div>
+    <div class="phase spacer">·</div>
+  </div>
+</body>
+</html>

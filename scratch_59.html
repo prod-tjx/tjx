@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>What I Learned from Python · TFA Lightning Talk</title>
+<style>
+  :root {
+    --bg: #0a0d14;
+    --bg-2: #0f1320;
+    --panel: #141926;
+    --panel-2: #1a2030;
+    --ink: #eef1f7;
+    --ink-dim: #c5cbd9;
+    --muted: #8b94a8;
+    --line: #232a3d;
+    --blue: #5fa8ff;
+    --green: #6ee7b7;
+    --amber: #f5b86b;
+    --pink: #ff8ab8;
+    --red: #ff7a7a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(1400px 800px at 85% -10%, #1c2540 0%, transparent 55%),
+      radial-gradient(1100px 700px at -10% 110%, #1a2f2a 0%, transparent 55%),
+      var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .slide {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 56px 64px 64px;
+  }
+
+  /* ─── Header ─── */
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+  }
+  h1 {
+    font-size: 52px;
+    line-height: 1.05;
+    margin: 0 0 16px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    background: linear-gradient(180deg, #ffffff 0%, #b9c2d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .lede {
+    color: var(--ink-dim);
+    font-size: 18px;
+    max-width: 980px;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .meta-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .meta-row span {
+    padding: 5px 11px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  /* ─── Section ─── */
+  .section {
+    margin-bottom: 44px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-num {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  .section-title {
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+  .section-tag {
+    margin-left: auto;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .tag-blue   { color: var(--blue);  border-color: rgba(95,168,255,0.4); }
+  .tag-green  { color: var(--green); border-color: rgba(110,231,183,0.4); }
+  .tag-amber  { color: var(--amber); border-color: rgba(245,184,107,0.4); }
+  .tag-pink   { color: var(--pink);  border-color: rgba(255,138,184,0.4); }
+
+  /* ─── Three-up content for each section ─── */
+  .triptych {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .block {
+    background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .block h4 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .block h4::before {
+    content: "";
+    width: 4px; height: 4px; border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+  }
+  .block.material h4 { color: var(--blue); }
+  .block.applied  h4 { color: var(--amber); }
+  .block.result   h4 { color: var(--green); }
+  .block p {
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .block ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+  }
+  .block ul li { margin-bottom: 4px; }
+  .block b { color: var(--ink); }
+  .metric {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(110,231,183,0.1);
+    color: var(--green);
+    font-size: 12px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    border: 1px solid rgba(110,231,183,0.25);
+  }
+
+  /* ─── Code blocks ─── */
+  .code-wrap {
+    margin-top: 18px;
+    background: #07090f;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #0d1119;
+    border-bottom: 1px solid var(--line);
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .code-header .lights {
+    display: flex; gap: 6px;
+  }
+  .code-header .lights span {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #2b3144;
+  }
+  .code-header .label {
+    color: var(--ink-dim);
+    letter-spacing: 0.04em;
+  }
+  pre {
+    margin: 0;
+    padding: 16px 18px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #d6dcec;
+    overflow-x: auto;
+  }
+  .kw { color: #c792ea; }
+  .str { color: #c3e88d; }
+  .com { color: #6a7491; font-style: italic; }
+  .fn  { color: #82aaff; }
+  .num { color: #f78c6c; }
+  .self { color: #ff8ab8; }
+  .op  { color: #89ddff; }
+
+  /* ─── Side-by-side code (before/after) ─── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .compare .code-header.bad  { color: var(--red); }
+  .compare .code-header.good { color: var(--green); }
+
+  /* ─── Closing ─── */
+  .takeaway {
+    margin-top: 12px;
+    background: linear-gradient(135deg, rgba(95,168,255,0.10), rgba(110,231,183,0.08));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+  .takeaway .icon {
+    font-size: 40px;
+    line-height: 1;
+  }
+  .takeaway h3 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .takeaway p {
+    margin: 0;
+    color: var(--ink-dim);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .takeaway b { color: var(--ink); }
+
+  .footer {
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+
+    <!-- ─── Header ─── -->
+    <div class="eyebrow">
+      <span class="dot"></span>
+      LIGHTNING TALK · TFA PYTHON ACCELERATOR REFLECTION
+    </div>
+    <h1>From "I can write a script" to<br/>"I can ship a system."</h1>
+    <p class="lede">
+      Three things the TFA Python Accelerator changed about how I write code &mdash; pulled
+      directly from the Trader Hunting + AutoCT pipelines I shipped this quarter.
+    </p>
+    <div class="meta-row">
+      <span>Course: TFA Python Accelerator (Modules 1&ndash;7)</span>
+      <span>Project: TFA Trader Hunting + AutoCT</span>
+      <span>DRI: tjx@apple.com</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 1: PANDAS + SNOWFLAKE                     -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 01</div>
+        <h2 class="section-title">Pandas as the glue between Snowflake and the rest of the world</h2>
+        <div class="section-tag tag-blue">MODULES 2 &amp; 3</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>Course Material</h4>
+          <p>The Pandas + NumPy modules taught the everyday DataFrame operations I now reach for constantly:</p>
+          <ul>
+            <li><b>concat</b> &mdash; stack results from multiple queries</li>
+            <li><b>drop_duplicates</b> &mdash; collapse overlapping rows</li>
+            <li><b>reset_index</b> &mdash; clean handoff to writers</li>
+            <li><b>groupby</b> &mdash; aggregate by category</li>
+            <li>Boolean masks for fast filtering</li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I Applied It</h4>
+          <p>The trader hunting pipeline runs <b>N pattern SQLs</b> against a temp frame, each returning a DataFrame.
+            I needed to merge them into one canonical result without double-counting orders that hit multiple patterns.</p>
+          <p>Course-taught pattern: collect into a list, <code>pd.concat</code>, then dedupe on a stable key
+            (<code>order_identifier</code>), then ship to Snowflake via <code>write_pandas</code>.</p>
+        </div>
+
+        <div class="block result">
+          <h4>Result</h4>
+          <p>One source-of-truth table per run, no duplicate orders across overlapping patterns,
+            clean handoff to the downstream AutoCT executor.</p>
+          <span class="metric">~15 patterns &rarr; 1 deduped table</span>
+          <span class="metric">0 duplicate order IDs</span>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="label">trader_hunting_queries_to_table.py &mdash; main loop</div>
+          <div>Python</div>
+        </div>
+<pre><span class="com"># Run each pattern, collect non-empty DataFrames</span>
+all_results = []
+<span class="kw">for</span> path <span class="kw">in</span> sql_files:
+    pattern = pattern_name_from_path(path)
+    qtype   = read_query_type_override(sql_text) <span class="kw">or</span> infer_query_type(pattern)
+    inner   = extract_select_from_ddl(sql_text)
+
+    df, n = execute_pattern(pattern, qtype, inner)
+    pattern_metrics[pattern] = {<span class="str">"count"</span>: n, <span class="str">"type"</span>: qtype}
+    <span class="kw">if not</span> df.empty:
+        all_results.append(df)
+
+<span class="com"># Concat → dedupe → write — three lines that replaced ~50 lines of SQL UNION logic</span>
+combined = pd.concat(all_results, ignore_index=<span class="kw">True</span>)
+pre = <span class="fn">len</span>(combined)
+combined = combined.drop_duplicates(subset=[<span class="str">"order_identifier"</span>], keep=<span class="str">"first"</span>)
+<span class="fn">print</span>(<span class="str">f"Dedup: {pre:,} → {</span><span class="fn">len</span><span class="str">(combined):,} unique orders"</span>)
+
+write_pandas(conn=conn.connection, df=combined, ...)</pre>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 2: BEST PRACTICES                         -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 02</div>
+        <h2 class="section-title">Programming best practices: small functions, config at the top, paths from <code>__file__</code></h2>
+        <div class="section-tag tag-amber">MODULE 6</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>Course Material</h4>
+          <ul>
+            <li><b>Separation of concerns</b> &mdash; one function, one job</li>
+            <li><b>Config at the top</b> &mdash; magic strings hoisted to constants</li>
+            <li><b>Defensive defaults</b> &mdash; <code>argparse</code>, env-var fallbacks</li>
+            <li><b>CWD-independence</b> &mdash; resolve paths from <code>__file__</code> so the script runs anywhere</li>
+            <li>Docstrings as the first thing future-you reads</li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I Applied It</h4>
+          <p>Decomposed the pipeline into single-purpose helpers:
+            <code>extract_select_from_ddl</code>, <code>execute_pattern</code>, <code>write_results</code>,
+            <code>format_slack</code>, <code>create_temp_frame</code>.</p>
+          <p>Hoisted every table name, role, and path into a config block. Resolved
+            <code>active_queries/</code> relative to the script so it runs identically in
+            Jenkins, PyCharm, or local CLI &mdash; no more "works on my machine."</p>
+        </div>
+
+        <div class="block result">
+          <h4>Result</h4>
+          <p><b>New hunting patterns are added by dropping a <code>.sql</code> file</b> into
+            <code>active_queries/</code>. Zero Python changes. Zero deploys. Zero PRs to the pipeline itself.</p>
+          <span class="metric">+1 pattern = +1 file</span>
+          <span class="metric">0 code review needed</span>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="code-wrap">
+          <div class="code-header">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="label bad">BEFORE &mdash; brittle, CWD-dependent</div>
+            <div>v0.1</div>
+          </div>
+<pre><span class="com"># Breaks the moment Jenkins runs from a different directory</span>
+QUERY_DIR = <span class="str">"./active_queries"</span>
+SLACK_OUT = <span class="str">"./slack_message.txt"</span>
+
+<span class="com"># Every table name hard-coded inline, repeated 9 times</span>
+sf.run_query(<span class="str">"INSERT INTO gbi_fraud_bap_db.ai_live_biz_app.Trader_..."</span>)
+sf.run_query(<span class="str">"TRUNCATE gbi_fraud_bap_db.ai_live_biz_app.Trader_..."</span>)
+
+<span class="com"># 300-line main() doing everything</span>
+<span class="kw">def</span> <span class="fn">main</span>():
+    <span class="com"># ... read files, parse SQL, run queries,</span>
+    <span class="com">#     enrich, dedupe, write, log, format Slack —</span>
+    <span class="com">#     all in one giant block</span>
+    ...</pre>
+        </div>
+
+        <div class="code-wrap">
+          <div class="code-header">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <div class="label good">AFTER &mdash; portable, configurable, composable</div>
+            <div>v1.0</div>
+          </div>
+<pre><span class="com"># Paths resolve relative to THIS file — runs anywhere</span>
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_QUERY_FILES_DIR = os.path.join(SCRIPT_DIR, <span class="str">"active_queries"</span>)
+DEFAULT_SLACK_FILE      = os.path.join(SCRIPT_DIR, <span class="str">"slack_message.txt"</span>)
+
+<span class="com"># Config block — change once, propagates everywhere</span>
+WORKING_SCHEMA = <span class="str">"gbi_fraud_bap_db.ai_live_biz_app"</span>
+RESULTS_TABLE  = <span class="fn">f</span><span class="str">"{WORKING_SCHEMA}.Trader_Automated_Queries_Results"</span>
+LOGGING_TABLE  = <span class="fn">f</span><span class="str">"{WORKING_SCHEMA}.trader_TFA_SL_TH_logging"</span>
+
+<span class="com"># main() is now just orchestration</span>
+<span class="kw">def</span> <span class="fn">main</span>(args):
+    set_role(args.table_schema)
+    create_results_table()
+    create_temp_frame(lookback_days=args.lookback_days)
+    <span class="com"># ... loop, dedupe, write, log, slack —</span>
+    <span class="com">#     each is one named function call</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════ -->
+    <!-- LESSON 3: AUTOMATION                             -->
+    <!-- ════════════════════════════════════════════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">LESSON 03</div>
+        <h2 class="section-title">Automation in production: secrets, batching, idempotency, observability</h2>
+        <div class="section-tag tag-pink">MODULE 7</div>
+      </div>
+
+      <div class="triptych">
+        <div class="block material">
+          <h4>Course Material</h4>
+          <ul>
+            <li>Jenkins-friendly entrypoints with <code>argparse</code></li>
+            <li>Secrets via <b>env vars</b>, never in code</li>
+            <li>Structured logging with timestamps + levels</li>
+            <li><b>Batching</b> large API calls to avoid timeouts</li>
+            <li><b>Empty-result guards</b> for idempotent reruns</li>
+            <li>Fail loudly, succeed quietly (or notify on success only)</li>
+          </ul>
+        </div>
+
+        <div class="block applied">
+          <h4>How I Applied It</h4>
+          <p>The AutoCT executor pulls the TH backlog, generates an A3 token from an
+            <code>APP_PASSWORD</code> Jenkins secret binding, then batches ACM
+            <code>TRADERCONFIRM</code> calls in chunks of 500.</p>
+          <p>Posts a green-bar Slack summary <b>only</b> on successful action,
+            silent on empty backlog, raises on failure.</p>
+          <p>Empty-result guard on the backlog query prevents a column-metadata crash
+            when Snowflake returns 0 rows.</p>
+        </div>
+
+        <div class="block result">
+          <h4>Result</h4>
+          <p>Hands-off trader confirms running on a Jenkins schedule. Per-pattern case notes
+            make every single action auditable in ACM.</p>
+          <span class="metric">Up to 500 orders / batch</span>
+          <span class="metric">0 manual touches per run</span>
+          <span class="metric">100% auditable case notes</span>
+        </div>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="label">trader_tfa_autoct_executor.py &mdash; the patterns Module 7 drilled in</div>
+          <div>Python</div>
+        </div>
+<pre><span class="com"># 1. Secrets from env, never hard-coded</span>
+app_password = os.environ.get(<span class="str">"APP_PASSWORD"</span>)
+<span class="kw">if not</span> app_password:
+    <span class="kw">raise</span> <span class="fn">RuntimeError</span>(<span class="str">"APP_PASSWORD env var required (Jenkins secret binding)"</span>)
+
+<span class="com"># 2. Empty-result guard — pandas drops column metadata on empty results,</span>
+<span class="com">#    so we hand back a properly-shaped empty DataFrame instead of crashing</span>
+<span class="kw">def</span> <span class="fn">fetch_backlog</span>() -> pd.DataFrame:
+    df = sf.run_query(BACKLOG_QUERY)
+    <span class="kw">if</span> df <span class="kw">is None or</span> df.empty:
+        log.info(<span class="str">"Backlog: 0 unique TH orders"</span>)
+        <span class="kw">return</span> pd.DataFrame(columns=[<span class="str">"ORDER_ID"</span>, <span class="str">"HUNTING_PATTERN"</span>])
+    ...
+
+<span class="com"># 3. Batch large API calls — ACM has a per-request ceiling</span>
+<span class="kw">def</span> <span class="fn">batch_confirm</span>(env, dsid, token, identifiers, case_note, batch_size=<span class="num">500</span>):
+    n       = <span class="fn">len</span>(identifiers)
+    batches = math.ceil(n / batch_size)
+    items   = <span class="fn">list</span>(identifiers.items())
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(batches):
+        chunk = <span class="fn">dict</span>(items[i*batch_size : <span class="fn">min</span>((i+<span class="num">1</span>)*batch_size, n)])
+        log.info(<span class="str">"Batch %d/%d (%d orders)"</span>, i+<span class="num">1</span>, batches, <span class="fn">len</span>(chunk))
+        parse_response(confirm_orders(env, dsid, token, chunk, case_note))
+
+<span class="com"># 4. Per-pattern case notes — every action is auditable in ACM</span>
+<span class="kw">for</span> pattern, group <span class="kw">in</span> df.groupby(<span class="str">"HUNTING_PATTERN"</span>):
+    case_note   = <span class="fn">f</span><span class="str">'SDS Trader Confirm SL TH - "{pattern}"'</span>
+    identifiers = {oid: case_note <span class="kw">for</span> oid <span class="kw">in</span> group[<span class="str">"ORDER_ID"</span>]}
+    batch_confirm(args.env, args.dsid, token, identifiers, case_note)
+
+<span class="com"># 5. Notify on success, silent on empty, raise on failure</span>
+<span class="kw">try</span>:
+    ...
+    post_success_to_slack(total_actioned, pattern_count)
+<span class="kw">except</span> <span class="fn">Exception</span>:
+    log.exception(<span class="str">"Run failed — NO Slack post (per design)"</span>)
+    <span class="kw">raise</span></pre>
+      </div>
+    </div>
+
+    <!-- ─── Closing takeaway ─── -->
+    <div class="takeaway">
+      <div class="icon">🎯</div>
+      <div>
+        <h3>Biggest takeaway</h3>
+        <p>
+          The course reframed Python from <b>"a way to get an answer once"</b> into
+          <b>"a way to ship a system that keeps giving answers."</b>
+          The Modules 6 + 7 patterns &mdash; small functions, config at the top, env-var secrets,
+          batching, empty-result guards &mdash; are exactly what turned a one-off query script
+          into a self-service pipeline the rest of the team can extend by dropping in a SQL file.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>DRI: tjx@apple.com &middot; ai-sds-fulfillment-tfa / TFA-Trader-Hunting-Automation</div>
+      <div>TFA Python Accelerator &middot; Lightning Talk</div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>SL TH Telemetry</title>
+<style>
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+         background:#0a0e27; color:#fff; min-height:100vh; padding:40px; }
+  h1 { font-size:42px; margin:0 0 8px; }
+  .sub { color:#8b95b8; margin-bottom:32px; }
+  .top { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1200px; margin:0 auto 28px; }
+  .stat { background:rgba(255,255,255,0.05); border-radius:12px; padding:20px; }
+  .stat .v { font-size:32px; font-weight:800;
+             background:linear-gradient(135deg,#5b8def,#a78bfa);
+             -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat .l { color:#8b95b8; font-size:12px; margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
+  .grid { display:grid; grid-template-columns:1.4fr 1fr; gap:24px; max-width:1200px; margin:0 auto; }
+  .card { background:rgba(255,255,255,0.05); border-radius:12px; padding:24px; }
+  .card h2 { margin:0 0 16px; font-size:18px; }
+  .row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:12px; padding:9px 0;
+         border-bottom:1px solid rgba(255,255,255,0.06); font-size:13px; }
+  .row:last-child { border:none; }
+  .pname { color:#c8cde0; font-family:"SF Mono",monospace; font-size:11px; }
+  .badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; margin-right:6px; }
+  .th { background:rgba(239,68,68,0.2); color:#fca5a5; }
+  .gct { background:rgba(52,211,153,0.2); color:#a7f3d0; }
+  .barwrap { width:240px; height:18px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden; }
+  .bar { height:100%; background:linear-gradient(90deg,#5b8def,#a78bfa); }
+  .num { color:#fff; font-weight:700; min-width:80px; text-align:right; font-size:12px; }
+  .donut { position:relative; width:200px; height:200px; margin:8px auto 16px; }
+  .legend { font-size:13px; color:#c8cde0; }
+  .legend div { display:flex; align-items:center; gap:8px; margin:6px 0; }
+  .swatch { width:12px; height:12px; border-radius:2px; }
+  .acc { display:flex; gap:14px; margin-top:16px; }
+  .acc .a { flex:1; background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.3);
+            border-radius:8px; padding:14px; text-align:center; }
+  .acc .a .pct { font-size:24px; font-weight:800; color:#34d399; }
+  .acc .a .nm { font-size:10px; color:#8b95b8; margin-top:4px; font-family:"SF Mono",monospace; }
+</style>
+</head>
+<body>
+  <h1>What's Already Moving Through the Pipeline</h1>
+  <div class="sub">SL TH actioning telemetry · 102 days of logged data · 9 patterns active</div>
+
+  <div class="top">
+    <div class="stat"><div class="v">790,717</div><div class="l">Orders Actioned</div></div>
+    <div class="stat"><div class="v">$931M</div><div class="l">Total Value Captured</div></div>
+    <div class="stat"><div class="v">228K</div><div class="l">Projected Monthly Orders</div></div>
+    <div class="stat"><div class="v">$268M</div><div class="l">Projected Monthly Value</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Top Patterns by Volume</h2>
+      <div class="row">
+        <div><span class="badge th">TH</span><span class="pname">AMR_gibberish_em_a1add_velocity</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:100%"></div></div>
+          <div class="num">687,732</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><span class="badge gct">GCT</span><span class="pname">trader_genuine_customer_orders</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:7.1%"></div></div>
+          <div class="num">48,944</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><span class="badge th">TH</span><span class="pname">TRADER_5600_BINS_370021_373778</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:6.3%"></div></div>
+          <div class="num">43,634</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><span class="badge th">TH</span><span class="pname">trader_aso_backlog_ip_velocity_hunt</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:0.4%; min-width:4px;"></div></div>
+          <div class="num">3,062</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><span class="badge th">TH</span><span class="pname">TRADER_AMR_Common_EM_DOM</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:0.4%; min-width:4px;"></div></div>
+          <div class="num">2,959</div>
+        </div>
+      </div>
+      <div class="row">
+        <div><span class="badge gct">GCT</span><span class="pname">trader_good_product_set</span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="barwrap"><div class="bar" style="width:0.3%; min-width:4px;"></div></div>
+          <div class="num">1,783</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>TH vs GCT Mix</h2>
+      <svg class="donut" viewBox="0 0 36 36">
+        <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3.5"/>
+        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ef4444" stroke-width="3.5"
+                stroke-dasharray="93.4 100" transform="rotate(-90 18 18)"/>
+        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#34d399" stroke-width="3.5"
+                stroke-dasharray="6.6 100" stroke-dashoffset="-93.4" transform="rotate(-90 18 18)"/>
+        <text x="18" y="17" text-anchor="middle" fill="#fff" font-size="6" font-weight="700">93.4%</text>
+        <text x="18" y="23" text-anchor="middle" fill="#8b95b8" font-size="2.4">trader hunting</text>
+      </svg>
+      <div class="legend">
+        <div><span class="swatch" style="background:#ef4444"></span>TH — 738,106 orders ($854M)</div>
+        <div><span class="swatch" style="background:#34d399"></span>GCT — 52,611 orders ($76M)</div>
+      </div>
+
+      <h2 style="margin-top:24px;">Backtesting Accuracy</h2>
+      <div class="acc">
+        <div class="a"><div class="pct">99.31%</div><div class="nm">AMR_GIBBERISH_EM<br/>_A1ADD_VELOCITY</div></div>
+        <div class="a"><div class="pct">99.04%</div><div class="nm">TRADER_5600_BINS<br/>_370021_373778</div></div>
+      </div>
+      <div style="font-size:11px; color:#8b95b8; margin-top:10px; line-height:1.4;">
+        90-day horizon · validated via Chi &amp; Ryo's framework · OOCA + analyst G/T verdict
+      </div>
+    </div>
+  </div>
+</body>
+</html>

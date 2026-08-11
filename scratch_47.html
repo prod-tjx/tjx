@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AutoCT Pipeline — Architecture</title>
+<style>
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+         background:linear-gradient(135deg,#0a0e27 0%,#1a1f3a 100%); color:#fff;
+         min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px; }
+  h1 { font-size:48px; margin:0 0 8px; font-weight:700; letter-spacing:-1px; }
+  .sub { color:#8b95b8; font-size:20px; margin-bottom:48px; }
+  .arch { display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center; max-width:1200px; }
+  .node { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+          border-radius:14px; padding:20px 24px; min-width:160px; text-align:center;
+          backdrop-filter:blur(10px); transition:transform .3s; }
+  .node:hover { transform:translateY(-4px); }
+  .node .icon { font-size:32px; margin-bottom:8px; }
+  .node .label { font-weight:600; font-size:15px; }
+  .node .meta { color:#8b95b8; font-size:12px; margin-top:4px; }
+  .arrow { color:#5b8def; font-size:24px; font-weight:700; }
+  .stage1 { border-color:#5b8def; box-shadow:0 0 24px rgba(91,141,239,0.25); }
+  .stage2 { border-color:#a78bfa; box-shadow:0 0 24px rgba(167,139,250,0.25); }
+  .stage3 { border-color:#34d399; box-shadow:0 0 24px rgba(52,211,153,0.25); }
+  .footer { margin-top:48px; color:#8b95b8; font-size:14px; }
+</style>
+</head>
+<body>
+  <h1>AutoCT Pipeline</h1>
+  <div class="sub">End-to-end Trader Hunting → Adding Automated Review at 99% Accuracy</div>
+  <div class="arch">
+    <div class="node stage1"><div class="icon">📁</div><div class="label">active_queries/</div><div class="meta">19 SQL patterns</div></div>
+    <div class="arrow">→</div>
+    <div class="node stage1"><div class="icon">⚙️</div><div class="label">Jenkins (2min runtime)</div><div class="meta">queries_to_table</div></div>
+    <div class="arrow">→</div>
+    <div class="node stage2"><div class="icon">❄️</div><div class="label">Snowflake</div><div class="meta">FF-excluded frame</div></div>
+    <div class="arrow">→</div>
+    <div class="node stage2"><div class="icon">📊</div><div class="label">Results Table</div><div class="meta">TH + GCT</div></div>
+    <div class="arrow">→</div>
+    <div class="node stage3"><div class="icon">🤖</div><div class="label">AutoCT Executor</div><div class="meta">ACM A3 mass_action</div></div>
+    <div class="arrow">→</div>
+    <div class="node stage3"><div class="icon">💬</div><div class="label">Slack</div><div class="meta">success summary</div></div>
+  </div>
+  <div class="footer">DRI: tjx@apple.com · Repo: sds-fulfillment-tfa/tree/tjx-AutoCT · Capstone: FY26</div>
+</body>
+</html>

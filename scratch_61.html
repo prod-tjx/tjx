@@ -1,0 +1,69 @@
+<!-- ════════════════════════════════════════════════ -->
+<!-- LESSON 1                                         -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">LESSON 01</div>
+    <h2 class="section-title">Use Pandas to combine and clean data from many sources</h2>
+    <div class="section-tag tag-blue">MODULES 2 &amp; 3</div>
+  </div>
+
+  <div class="triptych">
+    <div class="block material">
+      <h4>What the course taught</h4>
+      <p>Pandas gives you a spreadsheet you can control with code. The key moves:</p>
+      <ul>
+        <li><b>concat</b> &mdash; stack tables on top of each other</li>
+        <li><b>drop_duplicates</b> &mdash; remove repeated rows</li>
+        <li><b>groupby</b> &mdash; group rows by a column</li>
+        <li>Filtering with simple true/false rules</li>
+      </ul>
+    </div>
+
+    <div class="block applied">
+      <h4>How I used it</h4>
+      <p>My pipeline can run 15+ different SQL queries, each looking for a different type of suspicious order. Today, 2 patterns are live and more are queued up to add.</p>
+      <p>I stack all the results into one big table, drop any order that appears in more than one query, and save the clean list back to Snowflake.</p>
+    </div>
+
+    <div class="block result">
+      <h4>What it produced</h4>
+      <p>One clean table of unique orders, ready for the next step in the pipeline to act on.</p>
+      <span class="metric">Built for 15+ queries</span>
+      <span class="metric">2 patterns live today</span>
+      <span class="metric">0 duplicate orders</span>
+    </div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="lights"><span></span><span></span><span></span></div>
+      <div class="label">Combining results from many queries into one clean table</div>
+      <div>Python</div>
+    </div>
+<pre><span class="com"># Start with an empty list to collect results from every query</span>
+all_results = []
+
+<span class="com"># Loop through each .sql file in the active_queries folder</span>
+<span class="kw">for</span> query <span class="kw">in</span> sql_files:
+
+    <span class="com"># Run the query against Snowflake — returns a Pandas DataFrame</span>
+    <span class="com"># (a DataFrame is basically a table with rows and columns)</span>
+    df = run_query(query)
+
+    <span class="com"># Skip queries that found nothing — no point keeping empty tables</span>
+    <span class="kw">if not</span> df.empty:
+        all_results.append(df)
+
+<span class="com"># Stack every result on top of each other into one big table</span>
+<span class="com"># Example: query A finds 100 orders, query B finds 50 → combined has 150 rows</span>
+combined = pd.concat(all_results)
+
+<span class="com"># Remove any order_id that appears more than once</span>
+<span class="com"># (an order might be flagged by 2+ patterns — we only want it listed once)</span>
+combined = combined.drop_duplicates(subset=[<span class="str">"order_id"</span>])
+
+<span class="com"># Write the final clean table back to Snowflake for the next step to use</span>
+write_to_snowflake(combined)</pre>
+  </div>
+</div>

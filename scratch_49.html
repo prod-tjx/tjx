@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>How AutoCT Works</title>
+<style>
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+         background:linear-gradient(135deg,#0a0e27 0%,#1a1f3a 100%); color:#fff;
+         min-height:100vh; padding:40px; display:flex; flex-direction:column; align-items:center; }
+  h1 { font-size:42px; margin:0 0 8px; }
+  .sub { color:#8b95b8; margin-bottom:32px; font-size:16px; }
+  .ring { position:relative; width:760px; height:760px; }
+
+  /* SVG arrow layer sits behind the cards */
+  .arrows { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+
+  .center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            width:220px; height:220px; border-radius:50%;
+            background:radial-gradient(circle,#1a1f3a 0%,#0a0e27 100%);
+            border:2px solid rgba(91,141,239,0.4);
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            box-shadow:0 0 60px rgba(91,141,239,0.3); z-index:3; }
+  .center .big { font-size:34px; font-weight:800;
+                 background:linear-gradient(135deg,#5b8def,#a78bfa);
+                 -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .center .small { color:#8b95b8; font-size:13px; margin-top:6px; text-align:center; }
+
+  .stage { position:absolute; width:200px; padding:14px 16px; background:rgba(10,14,39,0.92);
+           border-radius:12px; border:1px solid rgba(255,255,255,0.12);
+           backdrop-filter:blur(10px); z-index:2; }
+  .stage .lbl { font-size:11px; letter-spacing:1px; color:#8b95b8; font-weight:600; text-transform:uppercase; }
+  .stage .ttl { font-size:15px; font-weight:700; margin-top:4px; }
+  .stage .det { font-size:12px; color:#c8cde0; margin-top:6px; line-height:1.4; }
+
+  /* 6 stages positioned around the ring */
+  .s1 { top:0;            left:50%; transform:translateX(-50%); border-top:3px solid #5b8def; }
+  .s2 { top:24%;          right:0;                              border-top:3px solid #5b8def; }
+  .s3 { bottom:24%;       right:0;                              border-top:3px solid #a78bfa; }
+  .s4 { bottom:0;         left:50%; transform:translateX(-50%); border-top:3px solid #a78bfa; }
+  .s5 { bottom:24%;       left:0;                               border-top:3px solid #34d399; }
+  .s6 { top:24%;          left:0;                               border-top:3px solid #34d399; }
+</style>
+</head>
+<body>
+  <h1>The Life of an Order</h1>
+  <div class="sub">From raw event in the trader-hunt frame to confirmed disposition in ACM</div>
+
+  <div class="ring">
+    <!-- Curved arrows flowing clockwise: 1 → 2 → 3 → 4 → 5 → 6 → 1 -->
+    <svg class="arrows" viewBox="0 0 760 760">
+      <defs>
+        <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b8def"/>
+        </marker>
+        <marker id="arrowheadP" viewBox="0 0 10 10" refX="8" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa"/>
+        </marker>
+        <marker id="arrowheadG" viewBox="0 0 10 10" refX="8" refY="5"
+                markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+        </marker>
+      </defs>
+
+      <!-- Each arc connects the edge of one card to the edge of the next, hugging the ring -->
+      <!-- 1 → 2 (top to top-right) -->
+      <path d="M 470 95 A 290 290 0 0 1 660 270"
+            fill="none" stroke="#5b8def" stroke-width="2.5"
+            stroke-dasharray="0" marker-end="url(#arrowhead)" opacity="0.85"/>
+      <!-- 2 → 3 (top-right to bottom-right) -->
+      <path d="M 660 310 A 290 290 0 0 1 660 460"
+            fill="none" stroke="#5b8def" stroke-width="2.5"
+            marker-end="url(#arrowheadP)" opacity="0.85"/>
+      <!-- 3 → 4 (bottom-right to bottom) -->
+      <path d="M 660 500 A 290 290 0 0 1 470 670"
+            fill="none" stroke="#a78bfa" stroke-width="2.5"
+            marker-end="url(#arrowheadP)" opacity="0.85"/>
+      <!-- 4 → 5 (bottom to bottom-left) -->
+      <path d="M 290 670 A 290 290 0 0 1 100 500"
+            fill="none" stroke="#a78bfa" stroke-width="2.5"
+            marker-end="url(#arrowheadG)" opacity="0.85"/>
+      <!-- 5 → 6 (bottom-left to top-left) -->
+      <path d="M 100 460 A 290 290 0 0 1 100 310"
+            fill="none" stroke="#34d399" stroke-width="2.5"
+            marker-end="url(#arrowheadG)" opacity="0.85"/>
+      <!-- 6 → 1 (top-left back to top) -->
+      <path d="M 100 270 A 290 290 0 0 1 290 95"
+            fill="none" stroke="#34d399" stroke-width="2.5"
+            marker-end="url(#arrowhead)" opacity="0.85"/>
+    </svg>
+
+    <div class="center">
+      <div class="big">~2m 30s</div>
+      <div class="small">end-to-end<br/>find → action → notify</div>
+    </div>
+
+    <div class="stage s1"><div class="lbl">01 · Ingest</div><div class="ttl">Lands in Frame</div><div class="det">Order enters trader_tfa_traderhunt_frame within 5-day window</div></div>
+    <div class="stage s2"><div class="lbl">02 · Filter</div><div class="ttl">FF Exclusion</div><div class="det">JOIN against freight-forwarder log; known FFs drop out</div></div>
+    <div class="stage s3"><div class="lbl">03 · Match</div><div class="ttl">Pattern Hit</div><div class="det">Order satisfies one or more SQL patterns from active_queries/</div></div>
+    <div class="stage s4"><div class="lbl">04 · Enrich</div><div class="ttl">Full Row Joined</div><div class="det">50+ columns attached, deduped on order_identifier</div></div>
+    <div class="stage s5"><div class="lbl">05 · Queue</div><div class="ttl">Backlog Eligible</div><div class="det">TH-only, ASO ST-blocked, no prior D68 action</div></div>
+    <div class="stage s6"><div class="lbl">06 · Action</div><div class="ttl">TRADERCONFIRM</div><div class="det">ACM A3 mass-action with per-pattern case note</div></div>
+  </div>
+</body>
+</html>

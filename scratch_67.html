@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1280" />
+<title>Impact Slide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1280px;
+    height: 768px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e4e4e7;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 5% 50%, rgba(52,199,89,0.07) 0%, transparent 40%),
+      radial-gradient(circle at 95% 50%, rgba(48,176,199,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 50% 100%, rgba(191,90,242,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 768px;
+    padding: 36px 52px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── header ── */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #34c759;
+    margin-bottom: 7px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: #34c759;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(52,199,89,0.55);
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    margin-bottom: 5px;
+  }
+  h1 span {
+    color: #34c759;
+  }
+  .subtitle {
+    font-size: 12.5px;
+    color: #8e8e93;
+    margin-bottom: 28px;
+  }
+
+  /* ── main body: two columns ── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* ── left: stat grid ── */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 14px 14px 0 0;
+  }
+  .stat-green::before  { background: linear-gradient(to right, #34c759, transparent); border-color: rgba(52,199,89,0.2); }
+  .stat-blue::before   { background: linear-gradient(to right, #30b0c7, transparent); border-color: rgba(48,176,199,0.2); }
+  .stat-purple::before { background: linear-gradient(to right, #bf5af2, transparent); border-color: rgba(191,90,242,0.2); }
+  .stat-orange::before { background: linear-gradient(to right, #ff9f0a, transparent); border-color: rgba(255,159,10,0.2); }
+
+  .stat-green  { border-color: rgba(52,199,89,0.15); }
+  .stat-blue   { border-color: rgba(48,176,199,0.15); }
+  .stat-purple { border-color: rgba(191,90,242,0.15); }
+  .stat-orange { border-color: rgba(255,159,10,0.15); }
+
+  .stat-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .stat-green .stat-label  { color: #34c759; }
+  .stat-blue .stat-label   { color: #30b0c7; }
+  .stat-purple .stat-label { color: #bf5af2; }
+  .stat-orange .stat-label { color: #ff9f0a; }
+
+  .stat-number {
+    font-size: 46px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  .stat-number sup {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: super;
+  }
+  .stat-number .unit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #636366;
+    margin-left: 3px;
+  }
+
+  .stat-desc {
+    font-size: 11px;
+    color: #8e8e93;
+    line-height: 1.4;
+  }
+
+  /* ── right: narrative ── */
+  .narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* before / after row */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .comp-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .comp-card.before { border-color: rgba(255,69,58,0.15); background: rgba(255,69,58,0.03); }
+  .comp-card.after  { border-color: rgba(52,199,89,0.15); background: rgba(52,199,89,0.03); }
+
+  .comp-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .before .comp-eyebrow { color: #ff453a; }
+  .after .comp-eyebrow  { color: #34c759; }
+
+  .comp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .comp-list li {
+    font-size: 11px;
+    color: #8e8e93;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .comp-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .before .comp-list li::before { background: #ff453a; }
+  .after .comp-list li::before  { background: #34c759; }
+
+  /* pipeline callout */
+  .pipeline-bar {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .pipe-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 5px;
+  }
+  .pipe-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .pipe-step:nth-child(1) .pipe-icon { background: rgba(52,199,89,0.12); }
+  .pipe-step:nth-child(3) .pipe-icon { background: rgba(48,176,199,0.12); }
+  .pipe-step:nth-child(5) .pipe-icon { background: rgba(191,90,242,0.12); }
+  .pipe-step:nth-child(7) .pipe-icon { background: rgba(255,159,10,0.12); }
+
+  .pipe-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+  }
+  .pipe-sub {
+    font-size: 9px;
+    color: #636366;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .pipe-arrow {
+    font-size: 12px;
+    color: #3a3a3c;
+    flex-shrink: 0;
+    padding: 0 4px;
+    margin-bottom: 10px;
+  }
+
+  /* takeaway strip */
+  .takeaway {
+    background: linear-gradient(135deg, rgba(52,199,89,0.07) 0%, rgba(48,176,199,0.05) 100%);
+    border: 1px solid rgba(52,199,89,0.15);
+    border-radius: 12px;
+    padding: 13px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .takeaway-bar {
+    width: 3px;
+    height: 36px;
+    background: linear-gradient(to bottom, #34c759, #30b0c7);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .takeaway-text {
+    font-size: 12px;
+    color: #c7c7cc;
+    line-height: 1.5;
+  }
+  .takeaway-text strong {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  /* ── footer ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 9px;
+    color: #3a3a3c;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Header -->
+  <div class="eyebrow">
+    <span class="dot"></span>
+    LIGHTNING TALK · IMPACT
+  </div>
+  <h1>A script became a system.<br/><span>The system runs itself.</span></h1>
+  <p class="subtitle">What the Trader Hunting + AutoCT pipelines deliver every day without any manual intervention.</p>
+
+  <div class="body">
+
+    <!-- Left: stats -->
+    <div class="stats">
+
+      <div class="stat-card stat-green">
+        <div class="stat-label">Queries Supported</div>
+        <div class="stat-number">15<span class="unit">+</span></div>
+        <div class="stat-desc">Fraud patterns the pipeline is architected to run. Two are live today, more queued.</div>
+      </div>
+
+      <div class="stat-card stat-blue">
+        <div class="stat-label">Orders Per Batch</div>
+        <div class="stat-number">500</div>
+        <div class="stat-desc">ACM confirmed per chunk on a Jenkins schedule. No API timeouts, no manual clicks.</div>
+      </div>
+
+      <div class="stat-card stat-purple">
+        <div class="stat-label">Duplicate Orders</div>
+        <div class="stat-number">0</div>
+        <div class="stat-desc">Cross-pattern deduplication ensures every order is actioned exactly once.</div>
+      </div>
+
+      <div class="stat-card stat-orange">
+        <div class="stat-label">Code Changes to Add a Pattern</div>
+        <div class="stat-number">0</div>
+        <div class="stat-desc">Drop a .sql file into the active queries folder. The pipeline picks it up automatically.</div>
+      </div>
+
+    </div>
+
+    <!-- Right: narrative -->
+    <div class="narrative">
+
+      <!-- Before / After -->
+      <div class="comparison">
+        <div class="comp-card before">
+          <div class="comp-eyebrow">Before</div>
+          <ul class="comp-list">
+            <li>Manual query runs to find suspicious orders</li>
+            <li>Copy-paste results across tools to action them</li>
+            <li>No consistent audit trail per pattern</li>
+            <li>Adding a new signal required code changes</li>
+          </ul>
+        </div>
+        <div class="comp-card after">
+          <div class="comp-eyebrow">After</div>
+          <ul class="comp-list">
+            <li>Jenkins runs the full pipeline on a schedule</li>
+            <li>ACM mass_action confirms orders automatically</li>
+            <li>Every action logged with pattern-level case notes</li>
+            <li>New signal = one SQL file, zero deploys</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pipeline flow -->
+      <div class="pipeline-bar">
+        <div class="pipe-step">
+          <div class="pipe-icon">🗄️</div>
+          <div class="pipe-title">Snowflake</div>
+          <div class="pipe-sub">15+ SQL patterns run against the frame</div>
+        </div>
+        <div class="pipe-arrow">›</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">🐼</div>
+          <div class="pipe-title">Pandas</div>
+          <div class="pipe-sub">Results stacked, deduped, cleaned</div>
+        </div>
+        <div class="pipe-arrow">›</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">🔐</div>
+          <div class="pipe-title">IDMS + A3</div>
+          <div class="pipe-sub">Auth token generated, credentials from env</div>
+        </div>
+        <div class="pipe-arrow">›</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">✅</div>
+          <div class="pipe-title">ACM</div>
+          <div class="pipe-sub">TRADERCONFIRM applied in batches of 500</div>
+        </div>
+      </div>
+
+      <!-- Takeaway -->
+      <div class="takeaway">
+        <div class="takeaway-bar"></div>
+        <div class="takeaway-text">
+          <strong>The real output was not orders confirmed.</strong> It was a system architected to grow. Every new fraud pattern added from here is a file drop, not a rebuild. The pipeline compounds.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>DRI: tjx@apple.com</div>
+    <div>TFA Python Accelerator · Lightning Talk</div>
+  </div>
+
+</div>
+</body>
+</html>

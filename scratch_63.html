@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Problem Statement</title>
+<style>
+  :root{
+    --bg1:#080b1f; --bg2:#161c3a;
+    --ink:#ffffff; --muted:#8b95b8; --dim:#6b7494;
+    --blue:#5b8def; --purple:#a78bfa; --green:#34d399;
+    --red:#f87171; --amber:#fbbf24;
+    --card:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.10);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+    background:
+      radial-gradient(900px 500px at 15% 10%, rgba(248,113,113,0.14), transparent 60%),
+      radial-gradient(900px 500px at 85% 90%, rgba(251,191,36,0.10), transparent 60%),
+      linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+    color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; padding:48px 32px;
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px; padding:6px 14px;
+    border:1px solid rgba(248,113,113,0.4); border-radius:999px;
+    color:var(--red); font-size:12px; font-weight:600; letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:18px;
+    background:rgba(248,113,113,0.08);
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--red); box-shadow:0 0 10px var(--red);
+  }
+
+  h1{
+    font-size:52px; margin:0 0 10px; font-weight:700;
+    letter-spacing:-1.2px; text-align:center; max-width:900px;
+    background:linear-gradient(135deg,#ffffff 30%,#c8cde0 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .sub{
+    color:var(--muted); font-size:17px; margin-bottom:52px;
+    text-align:center; max-width:800px; line-height:1.65;
+  }
+  .sub b{color:#fff; font-weight:600;}
+
+  /* ── Three problem cards ── */
+  .cards{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:24px; max-width:1100px; width:100%;
+  }
+
+  .card{
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; padding:32px 28px 28px;
+    backdrop-filter:blur(14px);
+    display:flex; flex-direction:column; align-items:flex-start;
+    position:relative; overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);}
+  .card::before{
+    content:""; position:absolute; top:0; left:20px; right:20px;
+    height:3px; border-radius:0 0 3px 3px;
+  }
+
+  .c-red::before{background:var(--red);}
+  .c-red{box-shadow:0 8px 28px rgba(248,113,113,0.14);}
+
+  .c-amber::before{background:var(--amber);}
+  .c-amber{box-shadow:0 8px 28px rgba(251,191,36,0.12);}
+
+  .c-purple::before{background:var(--purple);}
+  .c-purple{box-shadow:0 8px 28px rgba(167,139,250,0.14);}
+
+  .card-emoji{font-size:56px; line-height:1; margin-bottom:20px;}
+  .card-title{font-size:17px; font-weight:700; margin-bottom:12px; line-height:1.3;}
+  .card-body{color:var(--muted); font-size:13.5px; line-height:1.65; flex:1;}
+
+  .card-tag{
+    margin-top:20px; font-size:10.5px; font-weight:700;
+    letter-spacing:1.5px; text-transform:uppercase;
+  }
+  .c-red .card-tag{color:var(--red);}
+  .c-amber .card-tag{color:var(--amber);}
+  .c-purple .card-tag{color:var(--purple);}
+
+  /* ── Cross-program callout ── */
+  .callout{
+    max-width:1100px; width:100%; margin-top:28px;
+    background:rgba(251,191,36,0.05);
+    border:1px solid rgba(251,191,36,0.22);
+    border-left:4px solid var(--amber);
+    border-radius:16px; padding:24px 28px;
+  }
+  .callout-tag{
+    font-size:10.5px; font-weight:700; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--amber); margin-bottom:10px;
+  }
+  .callout-title{font-size:17px; font-weight:700; margin-bottom:10px;}
+  .callout-body{
+    color:var(--muted); font-size:13.5px;
+    line-height:1.65; max-width:960px;
+  }
+  .callout-body b{color:#fff;}
+
+  .footer{
+    margin-top:40px; color:var(--dim); font-size:13px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+</style>
+</head>
+<body>
+
+  <span class="eyebrow"><span class="dot"></span>Problem Statement · FY26Q3</span>
+
+  <h1>Problem Statement</h1>
+
+  <div class="sub">
+    The Trader team had <b>no automated path to decisioning</b> while adjacent programs
+    scaled through automation, TFA review remained fully manual and capacity-bound.
+  </div>
+
+  <div class="cards">
+
+    <div class="card c-red">
+      <div class="card-emoji">🧑‍💻</div>
+      <div class="card-title">Manual Analyst Review</div>
+      <div class="card-body">
+        Every trader-flagged order required individual analyst review. Throughput
+        was capped directly by human capacity — there was no way to scale without
+        adding headcount.
+      </div>
+      <div class="card-tag">Capacity Constraint</div>
+    </div>
+
+    <div class="card c-amber">
+      <div class="card-emoji">📈</div>
+      <div class="card-title">Unpredictable Volume Spikes</div>
+      <div class="card-body">
+        Automated actioning from other programs pushed large volumes of orders
+        to D68 trader blocks simultaneously. The trader team absorbed these
+        spikes with no tooling to match the pace.
+      </div>
+      <div class="card-tag">Cross-Program Impact</div>
+    </div>
+
+    <div class="card c-purple">
+      <div class="card-emoji">⏱️</div>
+      <div class="card-title">Always Reacting, Never Ahead</div>
+      <div class="card-body">
+        Orders near commit date were actioned in large batches by adjacent
+        programs. Without an automated response, the trader team was
+        perpetually catching up — never operating at the same speed.
+      </div>
+      <div class="card-tag">Decisioning Gap</div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="callout-tag">Cross-Program Volume Challenge</div>
+    <div class="callout-title">Adjacent Program Automation Was Driving the Backlog</div>
+    <div class="callout-body">
+      Programs like <b>DGF</b> and <b>FA2</b> had established automated actioning
+      pipelines. When their systems fired at scale, orders near commit date landed on
+      <b>D68 trader blocks</b> in large batches — many of them true positives close
+      to their commit window. The trader team had no equivalent automation, meaning
+      every downstream consequence of another program's decisioning required a
+      manual analyst response. The gap between automated upstream decisioning and
+      fully manual trader review created a structural capacity problem.
+    </div>
+  </div>
+
+  <div class="footer">DRI: tjx@apple.com · AutoCT / Address Count (Backtesting Extensions) · Capstone FY26</div>
+
+</body>
+</html>

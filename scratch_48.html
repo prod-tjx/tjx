@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>How AutoCT Works</title>
+<style>
+  body { margin:0; font-family:-apple-system,sans-serif; background:#0a0e27; color:#fff; min-height:100vh; padding:40px; }
+  h1 { font-size:42px; margin:0 0 32px; }
+  .flow { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:1200px; margin:0 auto; }
+  .step { background:rgba(255,255,255,0.05); border-left:4px solid #5b8def; border-radius:10px; padding:20px 24px; }
+  .step h3 { margin:0 0 10px; font-size:18px; color:#5b8def; }
+  .step p { margin:6px 0; font-size:14px; color:#c8cde0; line-height:1.5; }
+  .step code { background:rgba(91,141,239,0.15); padding:2px 8px; border-radius:4px; font-size:12px; color:#a8c4ff; }
+  .step.green { border-left-color:#34d399; } .step.green h3 { color:#34d399; }
+  .step.purple { border-left-color:#a78bfa; } .step.purple h3 { color:#a78bfa; }
+  .step.amber { border-left-color:#fbbf24; } .step.amber h3 { color:#fbbf24; }
+  .num { display:inline-block; width:28px; height:28px; background:rgba(91,141,239,0.2); border-radius:50%; text-align:center; line-height:28px; margin-right:10px; font-weight:700; }
+</style>
+</head>
+<body>
+  <h1>How AutoCT Works — Two Jobs, One Pipeline</h1>
+  <div class="flow">
+    <div class="step"><h3><span class="num">1</span>Build Frame</h3>
+      <p>FF-exclusion JOIN against <code>tfa_aso_freight_forwarder_address_log</code> on <code>APPLE_MAPS_ADD</code>. 5-day lookback.</p></div>
+    <div class="step"><h3><span class="num">2</span>Read SQL Patterns</h3>
+      <p>Glob <code>active_queries/*.sql</code>. Strip <code>CREATE OR REPLACE VIEW … AS</code> wrapper, swap source tables to temp frame.</p></div>
+    <div class="step purple"><h3><span class="num">3</span>Classify TH vs GCT</h3>
+      <p>Filename heuristic + per-file override comment <code>-- query_type: GCT</code>. Drives ACTION_LEVEL mapping.</p></div>
+    <div class="step purple"><h3><span class="num">4</span>Execute &amp; Enrich</h3>
+      <p>Each pattern joins back to temp frame for full 50+ column enrichment. Results aggregated, deduped on <code>order_identifier</code>.</p></div>
+    <div class="step green"><h3><span class="num">5</span>Write Results Table</h3>
+      <p>TRUNCATE + <code>write_pandas</code> into <code>Trader_Automated_Queries_Results</code>. Optional logging-table append.</p></div>
+    <div class="step green"><h3><span class="num">6</span>AutoCT Executor</h3>
+      <p>Pulls TH-only backlog filtered by ASO ST-block + no prior D68 action. Generates A3 token via IDMS.</p></div>
+    <div class="step amber"><h3><span class="num">7</span>ACM Mass Action</h3>
+      <p>Per-pattern <code>TRADERCONFIRM</code> / <code>A101</code> in 500-order batches. Per-order case note: <code>SDS Trader Confirm SL TH - "&lt;pattern&gt;"</code>.</p></div>
+    <div class="step amber"><h3><span class="num">8</span>Slack Notify</h3>
+      <p>Green-bar summary on success only. Silent on empty backlog or failure (per design — mirrors ASO health monitor).</p></div>
+  </div>
+</body>
+</html>

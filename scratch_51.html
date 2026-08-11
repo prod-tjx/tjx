@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><title>TFA Workflow Change</title>
+<style>
+  body { margin:0; font-family:-apple-system,sans-serif; background:#0a0e27; color:#fff; min-height:100vh; padding:40px; }
+  h1 { font-size:42px; margin:0 0 32px; }
+  .split { display:grid; grid-template-columns:1fr auto 1fr; gap:24px; max-width:1200px; margin:0 auto; align-items:stretch; }
+  .col { background:rgba(255,255,255,0.05); border-radius:14px; padding:28px; }
+  .col.before { border-left:4px solid #ef4444; }
+  .col.after  { border-left:4px solid #34d399; }
+  .col h2 { margin:0 0 20px; font-size:22px; }
+  .col.before h2 { color:#fca5a5; }
+  .col.after h2 { color:#a7f3d0; }
+  .row { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; line-height:1.5; }
+  .row:last-child { border:none; }
+  .icon { width:24px; flex-shrink:0; }
+  .arrow { display:flex; align-items:center; font-size:48px; color:#5b8def; }
+</style>
+</head>
+<body>
+  <h1>How It Changes TFA Workflows</h1>
+  <div class="split">
+    <div class="col before">
+      <h2>Before — Manual SL TH Loop</h2>
+      <div class="row"><span class="icon">🔍</span><div>Analyst pulls <code>trader_hunting_results_temp</code> manually, filters by pattern</div></div>
+      <div class="row"><span class="icon">📋</span><div>Copy/paste order IDs into ACM, action one-by-one or small batches</div></div>
+      <div class="row"><span class="icon">✍️</span><div>Hand-type case notes per pattern — inconsistent formatting</div></div>
+      <div class="row"><span class="icon">⏳</span><div>14-min Jenkins run + hours of analyst follow-through</div></div>
+      <div class="row"><span class="icon">🚫</span><div>FF-address noise mixed into queue, manual triage required</div></div>
+    </div>
+    <div class="arrow">⇨</div>
+    <div class="col after">
+      <h2>After — AutoCT Closes the Loop</h2>
+      <div class="row"><span class="icon">⚙️</span><div>Jenkins runs every 2h → table refreshed automatically</div></div>
+      <div class="row"><span class="icon">🤖</span><div>AutoCT executor pulls TH backlog, ASO-filters to ST-blocked, applies <code>TRADERCONFIRM</code> via ACM A3</div></div>
+      <div class="row"><span class="icon">📝</span><div>Per-pattern case note injected automatically: <code>SDS Trader Confirm SL TH - "&lt;pattern&gt;"</code></div></div>
+      <div class="row"><span class="icon">⚡</span><div>1m 5s end-to-end · Slack green-bar on success · silent on empty</div></div>
+      <div class="row"><span class="icon">🎯</span><div>Analysts redeploy to <strong>investigative</strong> work — pattern authoring, exceeds research, FF tuning</div></div>
+    </div>
+  </div>
+</body>
+</html>

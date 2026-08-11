@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TFA Trader AutoCT — Pipeline & Roadmap</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#121933; --ink:#e9ecf5; --muted:#9aa3c0;
+    --accent:#5b8cff; --accent2:#7ee0c2; --warn:#ffcf6b; --danger:#ff7a90;
+    --live:#7ee0c2; --pending:#ffcf6b; --future:#9aa3c0;
+    --border:#26305a; --shadow:0 10px 30px rgba(0,0,0,.35);
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#070a1a,#0b1020);color:var(--ink);font-family:var(--sans);padding:40px 24px}
+  .slide{max-width:1400px;margin:0 auto 48px;background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:36px 40px}
+  h1{margin:0 0 4px;font-size:26px;letter-spacing:.2px}
+  h2{margin:0 0 18px;font-size:14px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:1.5px}
+  h3{margin:0 0 8px;font-size:18px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+
+  .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch;margin:8px 0 24px}
+  .node{background:#0e1530;border:1px solid var(--border);border-radius:12px;padding:14px;position:relative;min-height:160px;display:flex;flex-direction:column}
+  .node h4{margin:0 0 8px;font-size:13px;letter-spacing:.4px;text-transform:uppercase;color:var(--accent)}
+  .node ul{margin:0;padding-left:16px;font-size:12.5px;color:var(--ink);line-height:1.45}
+  .node ul li{margin-bottom:3px}
+  .node .meta{margin-top:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:22px;font-weight:700}
+
+  .queries{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:8px}
+  .card{background:#0e1530;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .q-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:#141c3e;margin-bottom:8px;font-family:var(--mono);font-size:12.5px}
+  .q-row .name{display:flex;align-items:center;gap:10px}
+  .pill{font-family:var(--sans);font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.5px}
+  .pill.live{background:rgba(126,224,194,.15);color:var(--live);border:1px solid rgba(126,224,194,.4)}
+  .pill.pending{background:rgba(255,207,107,.15);color:var(--pending);border:1px solid rgba(255,207,107,.4)}
+  .pill.future{background:rgba(154,163,192,.15);color:var(--future);border:1px solid rgba(154,163,192,.35)}
+  .pill.th{background:rgba(91,140,255,.15);color:var(--accent);border:1px solid rgba(91,140,255,.4)}
+  .acc{color:var(--accent2);font-weight:600}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .dot.live{background:var(--live)} .dot.pending{background:var(--pending)} .dot.future{background:var(--future)}
+
+  .note{background:#0e1530;border-left:3px solid var(--accent);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--ink);margin-top:14px;line-height:1.5}
+  .note b{color:var(--accent2)}
+
+  /* ─── HORIZONTAL ROADMAP ─── */
+  .impact{background:linear-gradient(90deg,rgba(126,224,194,.12),rgba(91,140,255,.08));border:1px solid rgba(126,224,194,.35);border-radius:12px;padding:14px 20px;margin-bottom:22px;display:flex;align-items:center;gap:16px}
+  .impact .icon{font-size:24px}
+  .impact .txt{font-size:14px;line-height:1.5}
+  .impact b{color:var(--accent2)}
+
+  .road-h{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .stage{background:#0e1530;border:1px solid var(--border);border-radius:12px;padding:20px 24px;position:relative;overflow:hidden}
+  .stage::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+  .stage.short::before{background:var(--accent2)}
+  .stage.long::before{background:var(--accent)}
+  .stage-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:10px}
+  .stage-head .left{display:flex;align-items:baseline;gap:14px}
+  .stage-head .tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .stage-head h3{margin:0;font-size:20px}
+  .stage-head .deadline{font-size:12px;color:var(--warn);font-family:var(--mono)}
+
+  .h-items{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .h-item{background:#141c3e;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.45;border-left:2px solid var(--accent2)}
+  .stage.long .h-item{border-left-color:var(--accent)}
+  .h-item b{color:var(--accent2)}
+  .stage.long .h-item b{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ────────── SLIDE 1: PIPELINE ────────── -->
+<section class="slide">
+  <h2>TFA Trader Hunting · AutoCT</h2>
+  <h1>Pipeline Architecture & Active Queries</h1>
+  <div class="sub">Jenkins-orchestrated, runs daily · <span class="acc">tfa_trader_hunting_queries_to_table</span> → <span class="acc">trader-tfa-AutoCT-executor</span></div>
+
+  <div class="pipeline">
+    <div class="node">
+      <h4>1 · Source</h4>
+      <ul><li>active_queries/*.sql</li><li>CREATE OR REPLACE VIEW</li><li>SELECT body extracted</li></ul>
+      <div class="meta">repo: AutoCT_Pipeline/</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node">
+      <h4>2 · Frame Build</h4>
+      <ul><li>Trader_TFA_traderhunt_frame</li><li>FF-address exclusion join</li><li>Temp table, 5-day lookback</li></ul>
+      <div class="meta">FF excl: ~%/day logged</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node">
+      <h4>3 · Pattern Exec</h4>
+      <ul><li>Each pattern run vs temp frame</li><li>Enriched w/ full column set</li><li>TH / GCT classification</li><li>Dedup on order_identifier</li></ul>
+      <div class="meta">→ Trader_Automated_Queries_Results</div>
+    </div>
+  </div>
+
+  <div class="pipeline" style="margin-top:0">
+    <div class="node">
+      <h4>4 · Backlog Filter</h4>
+      <ul><li>TH-only</li><li>ASO ST-blocked, not trader-actioned</li><li>Excl. prior D68 A100–A103 / 110–113</li></ul>
+      <div class="meta">executor: BACKLOG_QUERY</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node">
+      <h4>5 · AutoCT Action</h4>
+      <ul><li>ACM A3 mass_action</li><li>TRADERCONFIRM · reason A101</li><li>Per-pattern case note</li><li>500-order batches</li></ul>
+      <div class="meta">IDMS app-to-app auth</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node">
+      <h4>6 · Notify</h4>
+      <ul><li>Slack: TFA Trader Notification</li><li>Green-bar on success</li><li>Silent on empty / failure</li></ul>
+      <div class="meta">SLACK_WEBHOOK_URL</div>
+    </div>
+    <div class="node" style="visibility:hidden"></div>
+  </div>
+
+  <div class="queries">
+    <div class="card">
+      <h3 style="margin-bottom:12px">Active Queries — going live</h3>
+      <div class="q-row"><div class="name"><span class="pill live">LIVE</span> AMR_gibberish_em_a1add_velocity.sql</div><div><span class="pill th">TH</span> <span class="acc" style="margin-left:8px">99.31%</span></div></div>
+      <div class="q-row"><div class="name"><span class="pill live">LIVE</span> TRADER_5600_BINS_370021_373778.sql</div><div><span class="pill th">TH</span> <span class="acc" style="margin-left:8px">99.04%</span></div></div>
+      <div class="q-row" style="opacity:.85"><div class="name"><span class="pill pending">PENDING</span> component_graphing_logic (as query)</div><div><span class="pill future">FUTURE</span></div></div>
+      <div class="legend">
+        <span><span class="dot live"></span> Live in production</span>
+        <span><span class="dot pending"></span> Awaiting Greg's validation</span>
+        <span><span class="dot future"></span> Next iteration</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px">Status</h3>
+      <p style="margin:0 0 10px;font-size:13.5px;line-height:1.55">Going live with <b class="acc">2 backtested queries</b> — both validated against historical data with &gt;99% precision (see <span style="font-family:var(--mono);font-size:12px">backtesting_results/</span>).</p>
+      <div class="note"><b>Next iteration:</b> once Greg completes validation, the component graphing logic will be ported into a SQL pattern and dropped into <span style="font-family:var(--mono)">active_queries/</span> — letting it ride the same AutoCT pipeline with zero pipeline changes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── SLIDE 2: HORIZONTAL ROADMAP ────────── -->
+<section class="slide">
+  <h2>TFA Trader Hunting · AutoCT</h2>
+  <h1>Next Stages</h1>
+
+  <div class="impact">
+    <div class="icon">⚡</div>
+    <div class="txt"><b>Analyst impact:</b> AutoCT auto-confirms high-precision trader orders via ACM — <b>analysts no longer spend time reviewing these order files</b>. Review hours redirected to net-new pattern discovery and edge-case investigation.</div>
+  </div>
+
+  <div class="road-h">
+    <div class="stage short">
+      <div class="stage-head">
+        <div class="left"><span class="tag">Short Term</span><h3>Next 6 Weeks</h3></div>
+        <div class="deadline">Target · July 31</div>
+      </div>
+      <div class="h-items">
+        <div class="h-item">Upload <b>backtested patterns</b> into <span style="font-family:var(--mono);font-size:11.5px">active_queries/</span></div>
+        <div class="h-item">Sync infra & data-gen functions with <b>Table generation logic</b> used  Fraud TFAs</div>
+        <div class="h-item">Migrate Slack + automated actioning logic <b>into SDS-Fulfillment-TFA</b> for reuse across TFAs</div>
+        <div class="h-item">Standardize Jenkins job layout so contributors can drop in patterns without touching pipeline code</div>
+      </div>
+    </div>
+
+    <div class="stage long">
+      <div class="stage-head">
+        <div class="left"><span class="tag">Long Term</span><h3>Next 6 Months</h3></div>
+        <div class="deadline">Target · Q4 2026</div>
+      </div>
+      <div class="h-items">
+        <div class="h-item">Validate & add patterns: <b>clustering, address counting, scoring models</b></div>
+        <div class="h-item">Improve job efficiency; <b>per-query performance dashboards</b></div>
+        <div class="h-item">Incorporate <b>classification-model logic</b> into trader hunting patterns</div>
+        <div class="h-item"><b>Active crawler agent</b> combing backlog using vector / similarity matching</div>
+        <div class="h-item" style="grid-column:span 2">Onboard more TFA contributors to upload patterns into <span style="font-family:var(--mono);font-size:11.5px">active_queries/</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

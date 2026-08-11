@@ -1,0 +1,17 @@
+# Please select one input type (choose one only):
+#    input_type:
+#      - sql     → read from SQL query
+#      - excel   → read from Excel file
+
+input_type: excel   # ← Enter "sql" or "excel" here
+
+excel:
+  filepath: data/sample.xlsx
+
+sql:
+  query: Select * from gbi_fraud_bap_db.ai_live_biz_app.trader_tfa_ww_mass_review
+
+
+#    Make sure to change ‘email_col’ to the correct column name you want to look at.  (Case Sensitive)Select * from gbi_fraud_bap_db.ai_live_biz_app.trader_tfa_ww_mass_review
+common:
+  email_col: b2_em

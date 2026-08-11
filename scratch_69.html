@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1280" />
+<title>Impact</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1280px;
+    height: 768px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e4e4e7;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 12% 88%, rgba(52,199,89,0.07) 0%, transparent 45%),
+      radial-gradient(circle at 88% 12%, rgba(48,176,199,0.06) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 768px;
+    padding: 32px 48px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── header ── */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #34c759;
+    margin-bottom: 7px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: #34c759;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(52,199,89,0.55);
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.4px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #8e8e93;
+    margin-bottom: 22px;
+    max-width: 980px;
+    line-height: 1.5;
+  }
+  .subtitle b { color: #e4e4e7; font-weight: 600; }
+
+  /* ── hero stat row ── */
+  .hero {
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  .hero-main {
+    flex: 0 0 360px;
+    background: linear-gradient(135deg, rgba(52,199,89,0.10), rgba(48,176,199,0.06));
+    border: 1px solid rgba(52,199,89,0.25);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-main .hero-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #34c759;
+    margin-bottom: 4px;
+  }
+  .hero-main .hero-num {
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #34c759, #30b0c7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.05;
+  }
+  .hero-main .hero-sub {
+    font-size: 11px;
+    color: #8e8e93;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .hero-main .hero-sub b { color: #e4e4e7; font-weight: 600; }
+
+  .hero-stats {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-stat .v {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+  }
+  .hero-stat .l {
+    font-size: 9.5px;
+    color: #8e8e93;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ── trunk row ── */
+  .trunk-row {
+    position: relative;
+    padding: 0 10px;
+  }
+  .h-trunk {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    height: 3px;
+    background: linear-gradient(to right, #34c759 0%, #30b0c7 50%, #bf5af2 100%);
+    border-radius: 3px;
+  }
+
+  /* ── three branch columns ── */
+  .branches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    flex: 1;
+    min-height: 0;
+    padding-top: 3px;
+  }
+
+  .branch {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 22px;
+  }
+  .branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 18px;
+    border-radius: 1px;
+  }
+  .branch-green::before  { background: #34c759; }
+  .branch-blue::before   { background: #30b0c7; }
+  .branch-purple::before { background: #bf5af2; }
+
+  .branch-node {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    flex-shrink: 0;
+  }
+  .branch-green .branch-node  { background: #34c759; box-shadow: 0 0 12px rgba(52,199,89,0.45); }
+  .branch-blue .branch-node   { background: #30b0c7; box-shadow: 0 0 12px rgba(48,176,199,0.45); }
+  .branch-purple .branch-node { background: #bf5af2; box-shadow: 0 0 12px rgba(191,90,242,0.45); }
+
+  .branch-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .branch-green .branch-card  { border-color: rgba(52,199,89,0.18); }
+  .branch-blue .branch-card   { border-color: rgba(48,176,199,0.18); }
+  .branch-purple .branch-card { border-color: rgba(191,90,242,0.18); }
+
+  .branch-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .branch-green .branch-icon  { background: rgba(52,199,89,0.12);  }
+  .branch-blue .branch-icon   { background: rgba(48,176,199,0.12); }
+  .branch-purple .branch-icon { background: rgba(191,90,242,0.12); }
+  .branch-icon svg { width: 18px; height: 18px; }
+
+  .branch-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .branch-green .branch-label  { color: #34c759; }
+  .branch-blue .branch-label   { color: #30b0c7; }
+  .branch-purple .branch-label { color: #bf5af2; }
+
+  .branch-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .leaves {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .leaf {
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 5px 11px;
+    border-radius: 8px;
+    color: #c7c7cc;
+    line-height: 1.4;
+  }
+  .branch-green .leaf  { background: rgba(52,199,89,0.08);  border: 1px solid rgba(52,199,89,0.18); }
+  .branch-blue .leaf   { background: rgba(48,176,199,0.08); border: 1px solid rgba(48,176,199,0.18); }
+  .branch-purple .leaf { background: rgba(191,90,242,0.08); border: 1px solid rgba(191,90,242,0.18); }
+
+  .branch-insight {
+    font-size: 10px;
+    color: #636366;
+    line-height: 1.45;
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: auto;
+  }
+
+  /* ── footer ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 9px;
+    color: #3a3a3c;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="eyebrow">
+    <span class="dot"></span>
+    CAPSTONE FY26 · IMPACT
+  </div>
+  <h1>Impact.</h1>
+  <p class="subtitle">
+    The trader team had no automated path to decisioning. The pipeline closes that gap and changes how the team operates day to day, from executing against known signals to investigating new ones.
+  </p>
+
+  <!-- hero stat + supporting numbers -->
+  <div class="hero">
+    <div class="hero-main">
+      <div class="hero-label">Order Value Auto Actioned</div>
+      <div class="hero-num">$1.0B</div>
+      <div class="hero-sub">across <b>854,059 orders</b> and <b>9 patterns</b>. Projected coverage of <b>228K orders and $269M</b> every month.</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="v">8K to 10K</div>
+        <div class="l">Orders Per Day</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">$8.98M</div>
+        <div class="l">Avg Value Per Day</div>
+      </div>
+      <div class="hero-stat">
+        <div class="v">99% +</div>
+        <div class="l">Accuracy of Patterns Running Live</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- horizontal trunk bar -->
+  <div class="trunk-row">
+    <div class="h-trunk"></div>
+  </div>
+
+  <!-- three branches -->
+  <div class="branches">
+
+    <div class="branch branch-green">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="branch-label">TFA Capacity Boost</div>
+        <div class="branch-title">A net new TFA in review capacity</div>
+        <div class="leaves">
+          <span class="leaf">8K to 10K orders decisioned daily with no analyst touch</span>
+          <span class="leaf">$8.98M in average daily order value covered</span>
+          <span class="leaf">$269M projected coverage every month</span>
+          <span class="leaf">Capacity equivalent to one full TFA, no headcount added</span>
+        </div>
+        <div class="branch-insight">The review queue is no longer the ceiling on how much we can action.</div>
+      </div>
+    </div>
+
+    <div class="branch branch-blue">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#30b0c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12 7 12 12 15 14"/>
+          </svg>
+        </div>
+        <div class="branch-label">Time Saved</div>
+        <div class="branch-title">Hours back to investigate new trends</div>
+        <div class="leaves">
+          <span class="leaf">Known patterns drop into active_queries and run on their own</span>
+          <span class="leaf">No more re executing the same review playbook daily</span>
+          <span class="leaf">Analyst time redirects to emerging behavior and novel signals</span>
+          <span class="leaf">Trend investigation replaces pattern execution</span>
+        </div>
+        <div class="branch-insight">Time saved is only valuable if it goes somewhere. It goes to the work no automation can do.</div>
+      </div>
+    </div>
+
+    <div class="branch branch-purple">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#bf5af2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6"  cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <line x1="8.59"  y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51"  x2="8.59"  y2="10.49"/>
+          </svg>
+        </div>
+        <div class="branch-label">Workflow Efficiency</div>
+        <div class="branch-title">A more scalable program takes shape</div>
+        <div class="leaves">
+          <span class="leaf">Dashboards surface trader rates by region and order type</span>
+          <span class="leaf">Custom series built from high confidence signals</span>
+          <span class="leaf">New patterns fold into the TFA workflow with no rebuild</span>
+          <span class="leaf">Validated through backtesting before promotion</span>
+        </div>
+        <div class="branch-insight">Each new pattern compounds the system. The workflow gets easier as it grows.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>DRI: tjx@apple.com</div>
+    <div>AutoCT · Trader Hunting Pipeline · Capstone FY26</div>
+  </div>
+
+</div>
+</body>
+</html>

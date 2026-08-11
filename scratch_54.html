@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AutoCT Pipeline — Architecture</title>
+<style>
+  :root{
+    --bg1:#080b1f; --bg2:#161c3a;
+    --ink:#ffffff; --muted:#8b95b8; --dim:#6b7494;
+    --blue:#5b8def; --purple:#a78bfa; --green:#34d399;
+    --card:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+       background:
+         radial-gradient(900px 500px at 15% 10%, rgba(91,141,239,0.18), transparent 60%),
+         radial-gradient(900px 500px at 85% 90%, rgba(52,211,153,0.14), transparent 60%),
+         linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+       color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+       align-items:center; justify-content:center; padding:48px 32px;}
+
+  .eyebrow{display:inline-flex; align-items:center; gap:10px; padding:6px 14px;
+           border:1px solid rgba(91,141,239,0.4); border-radius:999px;
+           color:var(--blue); font-size:12px; font-weight:600; letter-spacing:1.5px;
+           text-transform:uppercase; margin-bottom:18px;
+           background:rgba(91,141,239,0.08);}
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--blue);
+                box-shadow:0 0 10px var(--blue);}
+
+  h1{font-size:54px; margin:0 0 10px; font-weight:700; letter-spacing:-1.2px; text-align:center;
+     background:linear-gradient(135deg,#ffffff 30%, #c8cde0 100%);
+     -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+  .sub{color:var(--muted); font-size:18px; margin-bottom:56px; text-align:center; max-width:780px;}
+  .sub b{color:#fff; font-weight:600;}
+
+  /* ─── Architecture row ─── */
+  .arch{display:grid; grid-template-columns:repeat(11, auto); align-items:stretch;
+        gap:0 6px; max-width:1500px; padding:8px;}
+
+  .node{position:relative; background:var(--card); border:1px solid var(--border);
+        border-radius:16px; padding:22px 20px 18px; width:170px; min-height:170px;
+        backdrop-filter:blur(14px); display:flex; flex-direction:column;
+        transition:transform .25s ease, box-shadow .25s ease;
+        text-align:left;}
+  .node:hover{transform:translateY(-4px);}
+  .node .num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+             font-size:11px; color:var(--dim); letter-spacing:1.5px;}
+  .node .icon{font-size:26px; margin:6px 0 10px; line-height:1;}
+  .node .label{font-weight:700; font-size:15px; line-height:1.3;}
+  .node .meta{color:var(--muted); font-size:11.5px; margin-top:6px; line-height:1.4;
+              font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .node .pill{margin-top:auto; align-self:flex-start; font-size:10.5px; font-weight:600;
+              padding:3px 9px; border-radius:999px; letter-spacing:.5px; text-transform:uppercase;}
+
+  /* Top accent bar instead of colored border for cleaner look */
+  .node::before{content:""; position:absolute; top:0; left:18px; right:18px; height:3px;
+                border-radius:0 0 3px 3px;}
+
+  .s-detect::before{background:var(--blue);}
+  .s-detect{box-shadow:0 8px 28px rgba(91,141,239,0.18);}
+  .s-detect .pill{background:rgba(91,141,239,0.15); color:var(--blue);
+                  border:1px solid rgba(91,141,239,0.4);}
+
+  .s-process::before{background:var(--purple);}
+  .s-process{box-shadow:0 8px 28px rgba(167,139,250,0.18);}
+  .s-process .pill{background:rgba(167,139,250,0.15); color:var(--purple);
+                   border:1px solid rgba(167,139,250,0.4);}
+
+  .s-action::before{background:var(--green);}
+  .s-action{box-shadow:0 8px 28px rgba(52,211,153,0.18);}
+  .s-action .pill{background:rgba(52,211,153,0.15); color:var(--green);
+                  border:1px solid rgba(52,211,153,0.4);}
+
+  /* Chevron arrows */
+  .arrow{display:flex; align-items:center; justify-content:center; width:28px;
+         color:var(--blue); position:relative;}
+  .arrow svg{width:22px; height:22px;}
+  .a-detect svg path{stroke:var(--blue);}
+  .a-process svg path{stroke:var(--purple);}
+  .a-action svg path{stroke:var(--green);}
+
+  /* Phase strip beneath */
+  .phases{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+          max-width:1500px; width:100%; margin-top:28px; padding:0 8px;}
+  .phase{padding:14px 18px; border-radius:12px; border:1px solid var(--border);
+         background:rgba(255,255,255,0.02);}
+  .phase .tag{font-size:10.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;}
+  .phase h4{margin:6px 0 4px; font-size:15px; font-weight:600;}
+  .phase p{margin:0; color:var(--muted); font-size:12.5px; line-height:1.45;}
+  .p-detect{border-left:3px solid var(--blue);}
+  .p-detect .tag{color:var(--blue);}
+  .p-process{border-left:3px solid var(--purple);}
+  .p-process .tag{color:var(--purple);}
+  .p-action{border-left:3px solid var(--green);}
+  .p-action .tag{color:var(--green);}
+
+  /* KPI strip */
+  .kpis{display:flex; gap:18px; margin-top:28px; flex-wrap:wrap; justify-content:center;}
+  .kpi{padding:14px 22px; border-radius:12px; background:rgba(255,255,255,0.04);
+       border:1px solid var(--border); display:flex; flex-direction:column; align-items:center;
+       min-width:140px;}
+  .kpi .v{font-size:24px; font-weight:800;
+          background:linear-gradient(135deg,var(--blue),var(--purple));
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+  .kpi .l{font-size:11px; color:var(--muted); margin-top:4px; letter-spacing:1px;
+          text-transform:uppercase; font-weight:600;}
+
+  .footer{margin-top:40px; color:var(--dim); font-size:13px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+</style>
+</head>
+<body>
+
+  <span class="eyebrow"><span class="dot"></span>Architecture · Production</span>
+  <h1>AutoCT Pipeline</h1>
+  <div class="sub">End-to-end Trader Hunting — <b>automated review at &gt;99% precision</b></div>
+
+  <div class="arch">
+
+    <!-- DETECT -->
+    <div class="node s-detect">
+      <div class="num">01</div>
+      <div class="icon">📁</div>
+      <div class="label">active_queries/</div>
+      <div class="meta">CREATE OR REPLACE VIEW</div>
+      <div class="pill">2 active patterns</div>
+    </div>
+    <div class="arrow a-detect"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s-detect">
+      <div class="num">02</div>
+      <div class="icon">⚙️</div>
+      <div class="label">Jenkins</div>
+      <div class="meta">queries_to_table</div>
+      <div class="pill">~2 min runtime</div>
+    </div>
+    <div class="arrow a-detect"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <!-- PROCESS -->
+    <div class="node s-process">
+      <div class="num">03</div>
+      <div class="icon">❄️</div>
+      <div class="label">Snowflake</div>
+      <div class="meta">FF-excluded frame · 5d lookback</div>
+      <div class="pill">Detect</div>
+    </div>
+    <div class="arrow a-process"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s-process">
+      <div class="num">04</div>
+      <div class="icon">📊</div>
+      <div class="label">Results Table</div>
+      <div class="meta">Trader_Automated_Queries_Results</div>
+      <div class="pill">TH + GCT</div>
+    </div>
+    <div class="arrow a-process"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <!-- ACTION -->
+    <div class="node s-action">
+      <div class="num">05</div>
+      <div class="icon">🤖</div>
+      <div class="label">AutoCT Executor</div>
+      <div class="meta">ACM A3 mass_action</div>
+      <div class="pill">TRADERCONFIRM</div>
+    </div>
+    <div class="arrow a-action"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+
+    <div class="node s-action">
+      <div class="num">06</div>
+      <div class="icon">💬</div>
+      <div class="label">Slack</div>
+      <div class="meta">TFA Trader Notification</div>
+      <div class="pill">Success summary</div>
+    </div>
+
+  </div>
+
+  <div class="phases">
+    <div class="phase p-detect">
+      <div class="tag">Detect</div>
+      <h4>Pattern definitions → Jenkins</h4>
+      <p>SQL patterns live in source control. Jenkins extracts the SELECT body and runs it against the latest frame on every job tick.</p>
+    </div>
+    <div class="phase p-process">
+      <div class="tag">Process</div>
+      <h4>Snowflake → Results table</h4>
+      <p>FF-excluded temp frame is enriched with the full 50+ column row set, deduped on order_identifier, and written to the results table.</p>
+    </div>
+    <div class="phase p-action">
+      <div class="tag">Action</div>
+      <h4>ACM TRADERCONFIRM → Slack</h4>
+      <p>TH-only backlog is filtered against ASO ST-blocks, mass-actioned through ACM A3 in 500-order batches, and reported to Slack.</p>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">2</div><div class="l">Active Patterns</div></div>
+    <div class="kpi"><div class="v">&gt;99%</div><div class="l">Precision</div></div>
+    <div class="kpi"><div class="v">~2 min</div><div class="l">Runtime</div></div>
+    <div class="kpi"><div class="v">0</div><div class="l">Analyst Review</div></div>
+  </div>
+
+  <div class="footer">DRI: tjx@apple.com · Repo: sds-fulfillment-tfa/tree/tjx-AutoCT · Capstone: FY26</div>
+
+</body>
+</html>

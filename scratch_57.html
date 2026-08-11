@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Next Stages — Roadmap</title>
+<style>
+  :root{
+    --bg1:#080b1f; --bg2:#161c3a;
+    --ink:#fff; --muted:#8b95b8; --dim:#6b7494;
+    --blue:#5b8def; --purple:#a78bfa; --green:#34d399; --amber:#fbbf24;
+    --card:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.10);
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
+       background:
+         radial-gradient(900px 500px at 10% 10%, rgba(52,211,153,0.16), transparent 60%),
+         radial-gradient(900px 500px at 90% 90%, rgba(91,141,239,0.18), transparent 60%),
+         linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+       color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+       align-items:center; justify-content:center; padding:48px 32px;}
+
+  .eyebrow{display:inline-flex; align-items:center; gap:10px; padding:6px 14px;
+           border:1px solid rgba(91,141,239,0.4); border-radius:999px;
+           color:var(--blue); font-size:12px; font-weight:600; letter-spacing:1.5px;
+           text-transform:uppercase; margin-bottom:18px;
+           background:rgba(91,141,239,0.08);}
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--blue);
+                box-shadow:0 0 10px var(--blue);}
+
+  h1{font-size:54px; margin:0 0 10px; font-weight:700; letter-spacing:-1.2px; text-align:center;
+     background:linear-gradient(135deg,#fff 30%, #c8cde0 100%);
+     -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+  .sub{color:var(--muted); font-size:17px; margin-bottom:48px; text-align:center; max-width:780px;}
+
+  .road{display:grid; grid-template-columns:1fr 1fr; gap:28px;
+        max-width:1500px; width:100%;}
+
+  .stage{position:relative; background:var(--card); border:1px solid var(--border);
+         border-radius:18px; padding:28px 30px 26px; backdrop-filter:blur(14px);
+         overflow:hidden;}
+  .stage::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px;}
+  .short::before{background:linear-gradient(180deg, var(--green), var(--blue));}
+  .long::before{background:linear-gradient(180deg, var(--purple), var(--amber));}
+
+  .stage-head{display:flex; justify-content:space-between; align-items:flex-start;
+              padding-bottom:18px; margin-bottom:20px;
+              border-bottom:1px solid var(--border);}
+  .stage-head .left .tag{font-size:11px; font-weight:700; letter-spacing:1.8px;
+                          text-transform:uppercase; color:var(--muted);}
+  .short .stage-head .left .tag{color:var(--green);}
+  .long  .stage-head .left .tag{color:var(--purple);}
+  .stage-head h2{margin:6px 0 0; font-size:28px; font-weight:700; letter-spacing:-.5px;}
+  .stage-head .right{display:flex; flex-direction:column; align-items:flex-end; gap:4px;}
+  .deadline{font-family:var(--mono); font-size:11.5px; color:var(--amber);
+            padding:5px 12px; border-radius:999px; border:1px solid rgba(251,191,36,0.4);
+            background:rgba(251,191,36,0.08); letter-spacing:.5px;}
+  .horizon{font-family:var(--mono); font-size:10.5px; color:var(--dim); letter-spacing:1.5px;}
+
+  .items{display:flex; flex-direction:column; gap:12px;}
+  .item{display:flex; gap:14px; align-items:flex-start;
+        padding:14px 16px; border-radius:10px;
+        background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06);
+        transition:background .2s ease, transform .2s ease;}
+  .item:hover{background:rgba(255,255,255,0.05); transform:translateX(2px);}
+  .item .bullet{flex-shrink:0; width:22px; height:22px; border-radius:50%;
+                display:flex; align-items:center; justify-content:center;
+                font-size:11px; font-weight:700; font-family:var(--mono);}
+  .short .item .bullet{background:rgba(52,211,153,0.15); color:var(--green);
+                       border:1px solid rgba(52,211,153,0.4);}
+  .long  .item .bullet{background:rgba(167,139,250,0.15); color:var(--purple);
+                       border:1px solid rgba(167,139,250,0.4);}
+  .item .txt{font-size:14px; line-height:1.5; color:#d8dcec; flex:1;}
+  .item .txt b{color:#fff; font-weight:600;}
+  .item .due{display:inline-block; margin-left:8px; font-family:var(--mono);
+             font-size:10.5px; font-weight:600; padding:2px 8px; border-radius:999px;
+             background:rgba(251,191,36,0.12); color:var(--amber);
+             border:1px solid rgba(251,191,36,0.35); letter-spacing:.4px;
+             white-space:nowrap; vertical-align:middle;}
+
+  .footer{margin-top:32px; color:var(--dim); font-size:13px; font-family:var(--mono);}
+
+  @media (max-width:1100px){
+    .road{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+  <span class="eyebrow"><span class="dot"></span>Roadmap · FY26</span>
+  <h1>Next Stages</h1>
+  <div class="sub">Where AutoCT goes from here — near-term migration work, long-term intelligence layer.</div>
+
+  <div class="road">
+
+    <!-- ─── SHORT TERM ─── -->
+    <div class="stage short">
+      <div class="stage-head">
+        <div class="left">
+          <div class="tag">Short Term</div>
+          <h2>Next 6 Weeks</h2>
+        </div>
+        <div class="right">
+          <span class="deadline">Target · July 31</span>
+          <span class="horizon">3 Workstreams</span>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="item">
+          <div class="bullet">1</div>
+          <div class="txt">Upload backtested patterns into the <b>active queries folder</b></div>
+        </div>
+        <div class="item">
+          <div class="bullet">2</div>
+          <div class="txt">Sync infrastructure and data-generation functions with the <b>table generation logic</b> used by the broader TFA teams <span class="due">by July 31</span></div>
+        </div>
+        <div class="item">
+          <div class="bullet">3</div>
+          <div class="txt">Refactor <b>Slack notification</b> and <b>automated actioning logic</b> from the SDS-Fulfillment-TFA repo for reuse across <b>TFA spaces</b> <span class="due">by July 31</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── LONG TERM ─── -->
+    <div class="stage long">
+      <div class="stage-head">
+        <div class="left">
+          <div class="tag">Long Term</div>
+          <h2>Next 6 Months &amp; Onwards</h2>
+        </div>
+        <div class="right">
+          <span class="deadline" style="color:var(--purple); background:rgba(167,139,250,0.08); border-color:rgba(167,139,250,0.4);">Horizon · Q4 2026+</span>
+          <span class="horizon">5 Workstreams</span>
+        </div>
+      </div>
+
+      <div class="items">
+        <div class="item">
+          <div class="bullet">1</div>
+          <div class="txt">Validate and add more patterns: <b>clustering, address counting, scoring models</b>, etc.</div>
+        </div>
+        <div class="item">
+          <div class="bullet">2</div>
+          <div class="txt">Improve job efficiency and build <b>visualizations</b> based on per-query performance</div>
+        </div>
+        <div class="item">
+          <div class="bullet">3</div>
+          <div class="txt">Incorporate <b>classification-model logic</b> into trader hunting patterns</div>
+        </div>
+        <div class="item">
+          <div class="bullet">4</div>
+          <div class="txt">Stand up an <b>active search / crawl agent</b> that combs the backlog for new trader activity using <b>vector and data-point similarity</b></div>
+        </div>
+        <div class="item">
+          <div class="bullet">5</div>
+          <div class="txt">Onboard more <b>TFAs to contribute patterns</b> into the active queries folder</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">DRI: tjx@apple.com · sds-fulfillment-tfa/tree/tjx-AutoCT</div>
+
+</body>
+</html>

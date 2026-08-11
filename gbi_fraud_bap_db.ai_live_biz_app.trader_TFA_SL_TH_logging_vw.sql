@@ -39,3 +39,6 @@ QUALIFY ROW_NUMBER() OVER (
     PARTITION BY h.ORDER_ID
     ORDER BY h.RUN_TS DESC
 ) = 1;
+
+
+Select * from gbi_fraud_bap_db.ai_live_biz_app.trader_tfa_aso_ssla

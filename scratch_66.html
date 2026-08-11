@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1280" />
+<title>What I Learned — Knowledge Tree</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1280px;
+    height: 768px;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e4e4e7;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 90%, rgba(52,199,89,0.07) 0%, transparent 45%),
+      radial-gradient(circle at 90% 15%, rgba(48,176,199,0.05) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 768px;
+    padding: 32px 48px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── header ── */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #34c759;
+    margin-bottom: 7px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px;
+    background: #34c759;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(52,199,89,0.55);
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.4px;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #8e8e93;
+    margin-bottom: 22px;
+  }
+
+  /* ── horizontal trunk row ── */
+  .trunk-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 0;
+    position: relative;
+    padding: 0 10px;
+  }
+
+  /* the horizontal bar connecting all four branches */
+  .h-trunk {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    height: 3px;
+    background: linear-gradient(to right, #34c759 0%, #30b0c7 33%, #bf5af2 66%, #ff9f0a 100%);
+    border-radius: 3px;
+  }
+
+  /* ── four branch columns ── */
+  .branches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    padding-top: 3px;
+  }
+
+  .branch {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 22px;
+  }
+
+  /* vertical connector from trunk down to node */
+  .branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 18px;
+    border-radius: 1px;
+  }
+  .branch-green::before { background: #34c759; }
+  .branch-blue::before  { background: #30b0c7; }
+  .branch-purple::before { background: #bf5af2; }
+  .branch-orange::before { background: #ff9f0a; }
+
+  /* node dot */
+  .branch-node {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    flex-shrink: 0;
+  }
+  .branch-green .branch-node  { background: #34c759; box-shadow: 0 0 12px rgba(52,199,89,0.45); }
+  .branch-blue .branch-node   { background: #30b0c7; box-shadow: 0 0 12px rgba(48,176,199,0.45); }
+  .branch-purple .branch-node { background: #bf5af2; box-shadow: 0 0 12px rgba(191,90,242,0.45); }
+  .branch-orange .branch-node { background: #ff9f0a; box-shadow: 0 0 12px rgba(255,159,10,0.45); }
+
+  .branch-card {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 14px 16px;
+    flex: 1;
+  }
+  .branch-green .branch-card  { border-color: rgba(52,199,89,0.18); }
+  .branch-blue .branch-card   { border-color: rgba(48,176,199,0.18); }
+  .branch-purple .branch-card { border-color: rgba(191,90,242,0.18); }
+  .branch-orange .branch-card { border-color: rgba(255,159,10,0.18); }
+
+  .branch-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .branch-green .branch-label  { color: #34c759; }
+  .branch-blue .branch-label   { color: #30b0c7; }
+  .branch-purple .branch-label { color: #bf5af2; }
+  .branch-orange .branch-label { color: #ff9f0a; }
+
+  .branch-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .leaves {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .leaf {
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: #c7c7cc;
+    line-height: 1.4;
+  }
+  .branch-green .leaf  { background: rgba(52,199,89,0.08);  border: 1px solid rgba(52,199,89,0.18); }
+  .branch-blue .leaf   { background: rgba(48,176,199,0.08); border: 1px solid rgba(48,176,199,0.18); }
+  .branch-purple .leaf { background: rgba(191,90,242,0.08); border: 1px solid rgba(191,90,242,0.18); }
+  .branch-orange .leaf { background: rgba(255,159,10,0.08); border: 1px solid rgba(255,159,10,0.18); }
+
+  .branch-insight {
+    font-size: 10px;
+    color: #636366;
+    line-height: 1.4;
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* ── code section ── */
+  .code-section {
+    margin-top: 14px;
+  }
+  .code-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #48484a;
+    margin-bottom: 6px;
+  }
+  .code-wrap {
+    background: #111114;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.025);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 9px;
+    color: #48484a;
+  }
+  .code-header .lights { display: flex; gap: 5px; }
+  .code-header .lights span {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .code-header .tag {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #bf5af2;
+    background: rgba(191,90,242,0.12);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  pre {
+    padding: 10px 16px;
+    font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+    font-size: 10px;
+    line-height: 1.6;
+    color: #c7c7cc;
+    white-space: pre;
+    overflow: hidden;
+  }
+  .cmt { color: #4a4a52; }
+  .kw  { color: #ff7eb3; }
+  .fn  { color: #64d2ff; }
+  .str { color: #34c759; }
+  .var { color: #bf5af2; }
+
+  /* ── footer ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 9px;
+    color: #3a3a3c;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="eyebrow">
+    <span class="dot"></span>
+    LIGHTNING TALK · KNOWLEDGE TREE
+  </div>
+  <h1>What I learned building this system.</h1>
+  <p class="subtitle">
+    Four skill branches that developed from course concepts into production habits across the Trader Hunting + AutoCT pipelines.
+  </p>
+
+  <!-- horizontal trunk bar -->
+  <div class="trunk-row">
+    <div class="h-trunk"></div>
+  </div>
+
+  <!-- four columns -->
+  <div class="branches">
+
+    <div class="branch branch-green">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-label">Data Engineering</div>
+        <div class="branch-title">Combining and cleaning data from many sources</div>
+        <div class="leaves">
+          <span class="leaf">pd.concat to stack query results</span>
+          <span class="leaf">drop_duplicates across patterns</span>
+          <span class="leaf">groupby to act per hunting pattern</span>
+          <span class="leaf">write_pandas back to Snowflake</span>
+          <span class="leaf">Empty result guards to prevent crashes</span>
+        </div>
+        <div class="branch-insight">Pandas is the glue layer between SQL outputs and downstream actions.</div>
+      </div>
+    </div>
+
+    <div class="branch branch-blue">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-label">Code Architecture</div>
+        <div class="branch-title">Writing code that scales without rewrites</div>
+        <div class="leaves">
+          <span class="leaf">Config block at the top, used everywhere</span>
+          <span class="leaf">SCRIPT_DIR so paths work from any CWD</span>
+          <span class="leaf">One function = one job</span>
+          <span class="leaf">main() reads like a table of contents</span>
+          <span class="leaf">New pattern = drop a .sql file, done</span>
+        </div>
+        <div class="branch-insight">Good structure means the next person never has to read every line.</div>
+      </div>
+    </div>
+
+    <div class="branch branch-purple">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-label">Security &amp; Environments</div>
+        <div class="branch-title">Auth, secrets, and dev/prod separation</div>
+        <div class="leaves">
+          <span class="leaf">A3 token generation through IDMS</span>
+          <span class="leaf">APP_PASSWORD from Jenkins, never in code</span>
+          <span class="leaf">One --env flag swaps IDMS + ACM URLs</span>
+          <span class="leaf">DSID passed via CLI for service identity</span>
+          <span class="leaf">os.environ.get() with fail-fast guard</span>
+        </div>
+        <div class="branch-insight">Credentials flow through the environment. One flag flips the entire stack.</div>
+      </div>
+    </div>
+
+    <div class="branch branch-orange">
+      <div class="branch-node"></div>
+      <div class="branch-card">
+        <div class="branch-label">Production Automation</div>
+        <div class="branch-title">Safe to run unattended on a schedule</div>
+        <div class="leaves">
+          <span class="leaf">Batch 500 orders/chunk, no API timeouts</span>
+          <span class="leaf">Slack on success, loud & verbose with errors</span>
+          <span class="leaf">Logging table for full audit trail</span>
+          <span class="leaf">Jenkins cron, zero manual clicks</span>
+        </div>
+        <div class="branch-insight">Production code assumes no one is watching. It must explain itself through logs and alerts.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- code example -->
+  <div class="code-section">
+    <div class="code-label">Ex. of concepts learned: scalable auth + environment switching from trader_tfa_autoct_executor.py</div>
+    <div class="code-wrap">
+      <div class="code-header">
+        <div class="lights"><span></span><span></span><span></span></div>
+        <div>trader_tfa_autoct_executor.py</div>
+        <div class="tag">Security &amp; Environments Pattern</div>
+      </div>
+<pre>
+<span class="cmt"># All endpoints live in one dict — a single --env flag at runtime picks prod or dev, same code path either way</span>
+<span class="var">IDMS_ENDPOINTS</span> = {<span class="str">"prod"</span>: <span class="str">"https://idmsservice.corp.apple.com/apptoapp/token/generate"</span>, <span class="str">"dev"</span>: <span class="str">"https://idmsservice-uat.corp.apple.com/apptoapp/token/generate"</span>}
+<span class="var">ACM_ENDPOINTS</span>  = {<span class="str">"prod"</span>: <span class="str">"acm-nonregulated.g.apple.com"</span>, <span class="str">"dev"</span>: <span class="str">"acm-nonregulated-uat2.g.apple.com"</span>}
+
+<span class="cmt"># Credential is injected by Jenkins as a secret binding at job runtime — it never touches the repo</span>
+<span class="var">app_password</span> = os.environ.<span class="fn">get</span>(<span class="str">"APP_PASSWORD"</span>)
+<span class="kw">if not</span> <span class="var">app_password</span>: <span class="kw">raise</span> <span class="fn">RuntimeError</span>(<span class="str">"APP_PASSWORD env var required"</span>)  <span class="cmt"># fail loudly so silent auth failures never reach prod</span>
+
+<span class="cmt"># generate_a3_token posts APP_PASSWORD to IDMS, gets back a short-lived A3 token, then passes it to ACM</span>
+<span class="var">token</span> = <span class="fn">generate_a3_token</span>(args.env, <span class="var">app_password</span>)  <span class="cmt"># one call, right environment, no branching logic needed downstream</span>
+</pre>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>DRI: tjx@apple.com</div>
+    <div>TFA Python Accelerator · Lightning Talk</div>
+  </div>
+
+</div>
+</body>
+</html>
