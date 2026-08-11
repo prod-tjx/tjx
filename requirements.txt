@@ -1,0 +1,6 @@
+ai.snowflake>=1.2.0
+pandas
+snowflake-connector-python[secure-local-storage]
+sqlparse
+param
+requests
