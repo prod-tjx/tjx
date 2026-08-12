@@ -1,0 +1,1647 @@
+============================================================
+DATE: January 05, 2026 (Monday)
+============================================================
+
+TFA Trader Notification  [8:25 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 76 orders
+trader_good_product_set: 13 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2966 orders
+TRADER_5600_BINS_370021_373778: 113 orders
+TRADER_AMR_Common_EM_DOM: 250 orders
+TRADER_AMR_UNIQUE_EM_DOM: 10 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3161 orders
+ Runtime: 599.8s
+
+ GCT: 83 |  TH: 3078
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+Jason Best  [9:32 AM]
+was added to tfa-trader-hunting by .TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 20 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1243 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 206 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1265 orders
+ Runtime: 484.6s
+
+ GCT: 21 |  TH: 1244
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 06, 2026 (Tuesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 19 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 10 orders
+TRADER_5600_BINS_370021_373778: 94 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 127 orders
+ Runtime: 495.8s
+
+ GCT: 22 |  TH: 105
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:24 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 43 orders
+trader_good_product_set: 12 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2128 orders
+TRADER_5600_BINS_370021_373778: 149 orders
+TRADER_AMR_Common_EM_DOM: 265 orders
+TRADER_AMR_UNIQUE_EM_DOM: 12 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2330 orders
+ Runtime: 547.7s
+
+ GCT: 53 |  TH: 2277
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:25 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1354 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 160 orders
+TRADER_AMR_UNIQUE_EM_DOM: 6 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1361 orders
+ Runtime: 614.1s
+
+ GCT: 5 |  TH: 1356
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:26 PM]
+
+============================================================
+DATE: January 07, 2026 (Wednesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 11 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 240 orders
+TRADER_5600_BINS_370021_373778: 66 orders
+TRADER_AMR_Common_EM_DOM: 35 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 322 orders
+ Runtime: 682.6s
+
+ GCT: 16 |  TH: 306
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:24 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 38 orders
+trader_good_product_set: 7 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3396 orders
+TRADER_5600_BINS_370021_373778: 113 orders
+TRADER_AMR_Common_EM_DOM: 409 orders
+TRADER_AMR_UNIQUE_EM_DOM: 29 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3555 orders
+ Runtime: 546.1s
+
+ GCT: 41 |  TH: 3514
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:35 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 38 orders
+trader_good_product_set: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 279 orders
+TRADER_AMR_Common_EM_DOM: 2 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 318 orders
+ Runtime: 520.8s
+
+ GCT: 40 |  TH: 278
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:27 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 7 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 849 orders
+TRADER_5600_BINS_370021_373778: 2 orders
+TRADER_AMR_Common_EM_DOM: 145 orders
+TRADER_AMR_UNIQUE_EM_DOM: 8 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 862 orders
+ Runtime: 730.8s
+
+ GCT: 8 |  TH: 854
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 08, 2026 (Thursday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 21 orders
+trader_good_product_set: 8 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 502 orders
+TRADER_5600_BINS_370021_373778: 7 orders
+TRADER_AMR_Common_EM_DOM: 58 orders
+TRADER_AMR_UNIQUE_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 536 orders
+ Runtime: 586.5s
+
+ GCT: 27 |  TH: 509
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:22 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 62 orders
+trader_good_product_set: 16 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3079 orders
+TRADER_5600_BINS_370021_373778: 185 orders
+TRADER_AMR_Common_EM_DOM: 382 orders
+TRADER_AMR_UNIQUE_EM_DOM: 93 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3388 orders
+ Runtime: 451.8s
+
+ GCT: 69 |  TH: 3319
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:28 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 326 orders
+TRADER_5600_BINS_370021_373778: 4 orders
+TRADER_AMR_Common_EM_DOM: 49 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 334 orders
+ Runtime: 790.1s
+
+ GCT: 4 |  TH: 330
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 09, 2026 (Friday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 16 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1536 orders
+TRADER_5600_BINS_370021_373778: 12 orders
+TRADER_AMR_Common_EM_DOM: 239 orders
+TRADER_AMR_UNIQUE_EM_DOM: 9 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1565 orders
+ Runtime: 574.8s
+
+ GCT: 17 |  TH: 1548
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 97 orders
+trader_good_product_set: 17 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 4165 orders
+TRADER_5600_BINS_370021_373778: 23 orders
+TRADER_AMR_Common_EM_DOM: 600 orders
+TRADER_AMR_UNIQUE_EM_DOM: 13 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 4293 orders
+ Runtime: 494.0s
+
+ GCT: 105 |  TH: 4188
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:26 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 912 orders
+TRADER_AMR_Common_EM_DOM: 133 orders
+TRADER_AMR_UNIQUE_EM_DOM: 63 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 916 orders
+ Runtime: 658.1s
+
+ GCT: 4 |  TH: 912
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 10, 2026 (Saturday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 25 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2251 orders
+TRADER_5600_BINS_370021_373778: 24 orders
+TRADER_AMR_Common_EM_DOM: 306 orders
+TRADER_AMR_UNIQUE_EM_DOM: 53 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2301 orders
+ Runtime: 528.9s
+
+ GCT: 25 |  TH: 2276
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:24 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 46 orders
+trader_good_product_set: 7 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 4481 orders
+TRADER_5600_BINS_370021_373778: 10 orders
+TRADER_AMR_Common_EM_DOM: 758 orders
+TRADER_AMR_UNIQUE_EM_DOM: 10 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 4541 orders
+ Runtime: 531.7s
+
+ GCT: 50 |  TH: 4491
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:24 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 9 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1465 orders
+TRADER_5600_BINS_370021_373778: 138 orders
+TRADER_AMR_Common_EM_DOM: 257 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1612 orders
+ Runtime: 550.0s
+
+ GCT: 9 |  TH: 1603
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:26 PM]
+
+============================================================
+DATE: January 11, 2026 (Sunday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 11 orders
+trader_good_product_set: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1546 orders
+TRADER_5600_BINS_370021_373778: 332 orders
+TRADER_AMR_Common_EM_DOM: 240 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1892 orders
+ Runtime: 653.3s
+
+ GCT: 14 |  TH: 1878
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 40 orders
+trader_good_product_set: 14 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 4581 orders
+TRADER_5600_BINS_370021_373778: 82 orders
+TRADER_AMR_Common_EM_DOM: 828 orders
+TRADER_AMR_UNIQUE_EM_DOM: 5 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 4710 orders
+ Runtime: 486.9s
+
+ GCT: 47 |  TH: 4663
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:25 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 7 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1292 orders
+TRADER_5600_BINS_370021_373778: 12 orders
+TRADER_AMR_Common_EM_DOM: 216 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1310 orders
+ Runtime: 647.8s
+
+ GCT: 7 |  TH: 1303
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:25 PM]
+
+============================================================
+DATE: January 12, 2026 (Monday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 18 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 649 orders
+TRADER_5600_BINS_370021_373778: 53 orders
+TRADER_AMR_Common_EM_DOM: 67 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 721 orders
+ Runtime: 602.8s
+
+ GCT: 19 |  TH: 702
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 51 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3319 orders
+TRADER_5600_BINS_370021_373778: 33 orders
+TRADER_AMR_Common_EM_DOM: 533 orders
+TRADER_AMR_UNIQUE_EM_DOM: 11 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3406 orders
+ Runtime: 489.2s
+
+ GCT: 54 |  TH: 3352
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:25 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 10 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 895 orders
+TRADER_5600_BINS_370021_373778: 25 orders
+TRADER_AMR_Common_EM_DOM: 110 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 931 orders
+ Runtime: 594.2s
+
+ GCT: 11 |  TH: 920
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 13, 2026 (Tuesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 15 orders
+trader_good_product_set: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 43 orders
+TRADER_5600_BINS_370021_373778: 87 orders
+TRADER_AMR_Common_EM_DOM: 1 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 148 orders
+ Runtime: 520.1s
+
+ GCT: 18 |  TH: 130
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:22 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 51 orders
+trader_good_product_set: 11 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2326 orders
+TRADER_5600_BINS_370021_373778: 125 orders
+TRADER_AMR_Common_EM_DOM: 357 orders
+TRADER_AMR_UNIQUE_EM_DOM: 4 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2511 orders
+ Runtime: 470.1s
+
+ GCT: 59 |  TH: 2452
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:22 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 5 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1256 orders
+TRADER_5600_BINS_370021_373778: 3 orders
+TRADER_AMR_Common_EM_DOM: 95 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1265 orders
+ Runtime: 429.3s
+
+ GCT: 6 |  TH: 1259
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 14, 2026 (Wednesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 24 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 144 orders
+TRADER_5600_BINS_370021_373778: 24 orders
+TRADER_AMR_Common_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 193 orders
+ Runtime: 565.0s
+
+ GCT: 25 |  TH: 168
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 68 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2527 orders
+TRADER_5600_BINS_370021_373778: 4 orders
+TRADER_AMR_Common_EM_DOM: 426 orders
+TRADER_AMR_UNIQUE_EM_DOM: 8 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2602 orders
+ Runtime: 525.9s
+
+ GCT: 71 |  TH: 2531
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:26 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 75 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 789 orders
+TRADER_AMR_Common_EM_DOM: 122 orders
+TRADER_AMR_UNIQUE_EM_DOM: 7 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 867 orders
+ Runtime: 654.6s
+
+ GCT: 78 |  TH: 789
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 15, 2026 (Thursday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 19 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 733 orders
+TRADER_5600_BINS_370021_373778: 10 orders
+TRADER_AMR_Common_EM_DOM: 107 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 765 orders
+ Runtime: 478.4s
+
+ GCT: 21 |  TH: 744
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:22 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 46 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2315 orders
+TRADER_5600_BINS_370021_373778: 72 orders
+TRADER_AMR_Common_EM_DOM: 383 orders
+TRADER_AMR_UNIQUE_EM_DOM: 15 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2437 orders
+ Runtime: 429.4s
+
+ GCT: 48 |  TH: 2389
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:25 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 2 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1163 orders
+TRADER_5600_BINS_370021_373778: 3 orders
+TRADER_AMR_Common_EM_DOM: 143 orders
+TRADER_AMR_UNIQUE_EM_DOM: 17 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1169 orders
+ Runtime: 627.0s
+
+ GCT: 2 |  TH: 1167
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 16, 2026 (Friday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 21 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 457 orders
+TRADER_5600_BINS_370021_373778: 22 orders
+TRADER_AMR_Common_EM_DOM: 57 orders
+TRADER_AMR_UNIQUE_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 501 orders
+ Runtime: 538.1s
+
+ GCT: 22 |  TH: 479
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 75 orders
+trader_good_product_set: 23 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1815 orders
+TRADER_5600_BINS_370021_373778: 2 orders
+TRADER_AMR_Common_EM_DOM: 276 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1906 orders
+ Runtime: 373.4s
+
+ GCT: 89 |  TH: 1817
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:24 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 13 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1023 orders
+TRADER_AMR_Common_EM_DOM: 198 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1038 orders
+ Runtime: 547.4s
+
+ GCT: 15 |  TH: 1023
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:22 PM]
+
+============================================================
+DATE: January 17, 2026 (Saturday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 27 orders
+trader_good_product_set: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1696 orders
+TRADER_5600_BINS_370021_373778: 50 orders
+TRADER_AMR_Common_EM_DOM: 312 orders
+TRADER_AMR_UNIQUE_EM_DOM: 5 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1775 orders
+ Runtime: 435.9s
+
+ GCT: 29 |  TH: 1746
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:22 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 73 orders
+trader_good_product_set: 11 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2163 orders
+TRADER_5600_BINS_370021_373778: 25 orders
+TRADER_AMR_Common_EM_DOM: 293 orders
+TRADER_AMR_UNIQUE_EM_DOM: 2 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2266 orders
+ Runtime: 424.7s
+
+ GCT: 78 |  TH: 2188
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:34 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 13 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1197 orders
+TRADER_5600_BINS_370021_373778: 3 orders
+TRADER_AMR_Common_EM_DOM: 187 orders
+TRADER_AMR_UNIQUE_EM_DOM: 4 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1219 orders
+ Runtime: 1144.2s
+
+ GCT: 14 |  TH: 1205
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:22 PM]
+
+============================================================
+DATE: January 18, 2026 (Sunday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 15 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1121 orders
+TRADER_5600_BINS_370021_373778: 45 orders
+TRADER_AMR_Common_EM_DOM: 172 orders
+TRADER_AMR_UNIQUE_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1181 orders
+ Runtime: 451.1s
+
+ GCT: 15 |  TH: 1166
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 47 orders
+trader_good_product_set: 8 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2820 orders
+TRADER_5600_BINS_370021_373778: 10 orders
+TRADER_AMR_Common_EM_DOM: 413 orders
+TRADER_AMR_UNIQUE_EM_DOM: 4 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2883 orders
+ Runtime: 479.4s
+
+ GCT: 54 |  TH: 2829
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [10:12 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 56 orders
+trader_good_product_set: 9 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 4139 orders
+TRADER_5600_BINS_370021_373778: 10 orders
+TRADER_AMR_Common_EM_DOM: 593 orders
+TRADER_AMR_UNIQUE_EM_DOM: 11 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 4211 orders
+ Runtime: 407.4s
+
+ GCT: 63 |  TH: 4148
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 6 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 298 orders
+TRADER_5600_BINS_370021_373778: 26 orders
+TRADER_AMR_Common_EM_DOM: 38 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 333 orders
+ Runtime: 490.0s
+
+ GCT: 8 |  TH: 325
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 19, 2026 (Monday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 16 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1017 orders
+TRADER_5600_BINS_370021_373778: 46 orders
+TRADER_AMR_Common_EM_DOM: 144 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1082 orders
+ Runtime: 502.7s
+
+ GCT: 19 |  TH: 1063
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 41 orders
+trader_good_product_set: 9 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2130 orders
+TRADER_5600_BINS_370021_373778: 13 orders
+TRADER_AMR_Common_EM_DOM: 258 orders
+TRADER_AMR_UNIQUE_EM_DOM: 9 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2192 orders
+ Runtime: 393.9s
+
+ GCT: 49 |  TH: 2143
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 12 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 932 orders
+TRADER_5600_BINS_370021_373778: 5 orders
+TRADER_AMR_Common_EM_DOM: 140 orders
+TRADER_AMR_UNIQUE_EM_DOM: 19 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 951 orders
+ Runtime: 509.6s
+
+ GCT: 14 |  TH: 937
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:22 PM]
+
+============================================================
+DATE: January 20, 2026 (Tuesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 23 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 39 orders
+TRADER_5600_BINS_370021_373778: 43 orders
+TRADER_AMR_Common_EM_DOM: 4 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 106 orders
+ Runtime: 435.2s
+
+ GCT: 24 |  TH: 82
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 55 orders
+trader_good_product_set: 12 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2287 orders
+TRADER_5600_BINS_370021_373778: 9 orders
+TRADER_AMR_Common_EM_DOM: 274 orders
+TRADER_AMR_UNIQUE_EM_DOM: 9 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2357 orders
+ Runtime: 495.8s
+
+ GCT: 60 |  TH: 2297
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 3 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 835 orders
+TRADER_AMR_Common_EM_DOM: 117 orders
+TRADER_AMR_UNIQUE_EM_DOM: 4 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 839 orders
+ Runtime: 501.4s
+
+ GCT: 4 |  TH: 835
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:25 PM]
+
+============================================================
+DATE: January 21, 2026 (Wednesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 39 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 392 orders
+TRADER_5600_BINS_370021_373778: 59 orders
+TRADER_AMR_Common_EM_DOM: 54 orders
+TRADER_AMR_UNIQUE_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 494 orders
+ Runtime: 601.2s
+
+ GCT: 43 |  TH: 451
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 55 orders
+trader_good_product_set: 9 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3534 orders
+TRADER_5600_BINS_370021_373778: 97 orders
+TRADER_AMR_Common_EM_DOM: 328 orders
+TRADER_AMR_UNIQUE_EM_DOM: 12 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3687 orders
+ Runtime: 377.7s
+
+ GCT: 56 |  TH: 3631
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:22 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 7 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1149 orders
+TRADER_AMR_Common_EM_DOM: 144 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1158 orders
+ Runtime: 455.8s
+
+ GCT: 9 |  TH: 1149
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:22 PM]
+
+============================================================
+DATE: January 22, 2026 (Thursday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 23 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 786 orders
+TRADER_5600_BINS_370021_373778: 53 orders
+TRADER_AMR_Common_EM_DOM: 84 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 865 orders
+ Runtime: 468.9s
+
+ GCT: 26 |  TH: 839
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 119 orders
+trader_good_product_set: 16 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2694 orders
+TRADER_5600_BINS_370021_373778: 8 orders
+TRADER_AMR_Common_EM_DOM: 192 orders
+TRADER_AMR_UNIQUE_EM_DOM: 7 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2826 orders
+ Runtime: 403.4s
+
+ GCT: 124 |  TH: 2702
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:27 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 12 orders
+trader_good_product_set: 5 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1337 orders
+TRADER_AMR_Common_EM_DOM: 114 orders
+TRADER_AMR_UNIQUE_EM_DOM: 8 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1353 orders
+ Runtime: 715.3s
+
+ GCT: 16 |  TH: 1337
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:22 PM]
+
+============================================================
+DATE: January 23, 2026 (Friday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 28 orders
+trader_good_product_set: 4 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 789 orders
+TRADER_5600_BINS_370021_373778: 52 orders
+TRADER_AMR_Common_EM_DOM: 119 orders
+TRADER_AMR_UNIQUE_EM_DOM: 8 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 873 orders
+ Runtime: 449.2s
+
+ GCT: 32 |  TH: 841
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 71 orders
+trader_good_product_set: 13 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3522 orders
+TRADER_5600_BINS_370021_373778: 22 orders
+TRADER_AMR_Common_EM_DOM: 374 orders
+TRADER_AMR_UNIQUE_EM_DOM: 18 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3622 orders
+ Runtime: 375.9s
+
+ GCT: 78 |  TH: 3544
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 14 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1118 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 172 orders
+TRADER_AMR_UNIQUE_EM_DOM: 11 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1134 orders
+ Runtime: 470.5s
+
+ GCT: 16 |  TH: 1118
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:21 PM]
+
+============================================================
+DATE: January 24, 2026 (Saturday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 26 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 352 orders
+TRADER_5600_BINS_370021_373778: 63 orders
+TRADER_AMR_Common_EM_DOM: 30 orders
+TRADER_AMR_UNIQUE_EM_DOM: 8 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 445 orders
+ Runtime: 407.1s
+
+ GCT: 29 |  TH: 416
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 97 orders
+trader_good_product_set: 15 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 5199 orders
+TRADER_5600_BINS_370021_373778: 2 orders
+TRADER_AMR_Common_EM_DOM: 528 orders
+TRADER_AMR_UNIQUE_EM_DOM: 31 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 5306 orders
+ Runtime: 405.6s
+
+ GCT: 104 |  TH: 5202
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [10:19 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 99 orders
+trader_good_product_set: 11 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2311 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 215 orders
+TRADER_AMR_UNIQUE_EM_DOM: 21 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2414 orders
+ Runtime: 474.7s
+
+ GCT: 104 |  TH: 2310
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [2:32 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 21 orders
+trader_good_product_set: 1 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 205 orders
+TRADER_AMR_Common_EM_DOM: 24 orders
+TRADER_AMR_UNIQUE_EM_DOM: 6 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 226 orders
+ Runtime: 470.7s
+
+ GCT: 22 |  TH: 204
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:24 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 16 orders
+trader_good_product_set: 3 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 2594 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 81 orders
+TRADER_AMR_UNIQUE_EM_DOM: 44 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2615 orders
+ Runtime: 540.9s
+
+ GCT: 19 |  TH: 2596
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 25, 2026 (Sunday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 70 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 4365 orders
+TRADER_5600_BINS_370021_373778: 47 orders
+TRADER_AMR_Common_EM_DOM: 27 orders
+TRADER_AMR_UNIQUE_EM_DOM: 58 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 4488 orders
+ Runtime: 526.9s
+
+ GCT: 75 |  TH: 4413
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:23 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 89 orders
+trader_good_product_set: 18 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 5952 orders
+TRADER_5600_BINS_370021_373778: 13 orders
+TRADER_AMR_Common_EM_DOM: 20 orders
+TRADER_AMR_UNIQUE_EM_DOM: 77 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 6072 orders
+ Runtime: 499.3s
+
+ GCT: 102 |  TH: 5970
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [9:51 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 88 orders
+trader_good_product_set: 15 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 6110 orders
+TRADER_5600_BINS_370021_373778: 13 orders
+TRADER_AMR_Common_EM_DOM: 23 orders
+TRADER_AMR_UNIQUE_EM_DOM: 95 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 6228 orders
+ Runtime: 524.1s
+
+ GCT: 100 |  TH: 6128
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:23 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 7 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1358 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 8 orders
+TRADER_AMR_UNIQUE_EM_DOM: 6 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 1368 orders
+ Runtime: 455.5s
+
+ GCT: 8 |  TH: 1360
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:23 PM]
+
+============================================================
+DATE: January 26, 2026 (Monday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 37 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 479 orders
+TRADER_5600_BINS_370021_373778: 30 orders
+TRADER_AMR_Common_EM_DOM: 2 orders
+TRADER_AMR_UNIQUE_EM_DOM: 3 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 550 orders
+ Runtime: 483.6s
+
+ GCT: 40 |  TH: 510
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:21 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 163 orders
+trader_good_product_set: 15 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 3240 orders
+TRADER_5600_BINS_370021_373778: 25 orders
+TRADER_AMR_Common_EM_DOM: 28 orders
+TRADER_AMR_UNIQUE_EM_DOM: 29 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 3434 orders
+ Runtime: 368.8s
+
+ GCT: 169 |  TH: 3265
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [10:05 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 98 orders
+trader_good_product_set: 6 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 14 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 117 orders
+ Runtime: 495.1s
+
+ GCT: 102 |  TH: 15
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:20 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 21 orders
+trader_good_product_set: 2 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 199 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 221 orders
+ Runtime: 327.5s
+
+ GCT: 22 |  TH: 199
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [11:24 PM]
+
+============================================================
+DATE: January 27, 2026 (Tuesday)
+============================================================
+
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 49 orders
+trader_good_product_set: 10 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 150 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 3 orders
+TRADER_AMR_UNIQUE_EM_DOM: 1 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 201 orders
+ Runtime: 554.1s
+
+ GCT: 50 |  TH: 151
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [8:22 AM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 159 orders
+trader_good_product_set: 12 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 1892 orders
+TRADER_5600_BINS_370021_373778: 13 orders
+TRADER_AMR_Common_EM_DOM: 10 orders
+TRADER_AMR_UNIQUE_EM_DOM: 26 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 2073 orders
+ Runtime: 448.3s
+
+ GCT: 167 |  TH: 1906
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
+TFA Trader Notification  [5:22 PM]
+ Trader Alerts Results
+━━━━━━━━━━━━━━━━━━━━━━
+
+ Genuine Customer Queries
+trader_genuine_customer_orders: 24 orders
+trader_good_product_set: 14 orders
+
+ Trader Hunting Queries
+AMR_gibberish_em_a1add_velocity: 644 orders
+TRADER_5600_BINS_370021_373778: 1 orders
+TRADER_AMR_Common_EM_DOM: 18 orders
+TRADER_AMR_UNIQUE_EM_DOM: 5 orders
+
+━━━━━━━━━━━━━━━━━━━━━━
+ Total: 669 orders
+ Runtime: 425.1s
+
+ GCT: 24 |  TH: 645
+
+SELECT * FROM gbi_fraud_bap_db.ai_live_biz_app.Trader_Automated_Queries_Results
