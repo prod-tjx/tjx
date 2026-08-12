@@ -1,0 +1,34 @@
+5600 - Feb 14th & 15th - Adhoc Task
+Total Reviewed: 8378
+CT: 1837 (1533 actioned with TRADER UNWORKABLE, 304 Upstream CT)
+CT Rate: ~21.93%
+
+Trader patterns:
+Orders placed from a mix of foreign & domestic IPs with ISPs such as Fastly Inc, CHINANET, and M247 Europe SRL. Same IPs observed exceeding item counts across multiple accounts with different email handles. Trader A1 names are similar across orders with different outlook email handle variations (Wang Hei , Lai lajiao, ADGWI, Lin 2 Jiaying).
+
+Payments are stacked using multiple AGCD and APID methods. Addresses are being manipulated at known trader locations such as 2115 Armour Dr, 707 Carson Dr, and 88 Quigley Blvd. Patterns found using address substring clusters to bypass address manipulation.
+
+Traders shipping to NOMAD states such as DE & OR. Low profile accessory add on trader behavior observed including EarPods, USB C adapters, and Apple Watch.
+     1830 - Mar 13th - Adhoc Task
+Total Reviewed: 3154
+CT: 395 (395 actioned with TRADER UNWORKABLE, 383 EDU, 12 Consumer)
+CT Rate: ~12.52%
+Case Note: SDS Trader Confirm Adhoc (1830 - 2026-03-13)
+
+Trader patterns:
+Orders placed from domestic Chinese ISPs such as China Unicom, China Mobile, and CHINANET. Same IPs observed accumulating 28–52 edu Mac units across multiple accounts with different email handles. 
+Geographic mismatches observed, such as Hebei province IPs shipping to Beijing addresses. 
+~89% of orders use zero-age accounts (353/395), consistent with fresh Apple ID/account creation for single-use purchasing.
+Payments made via domestic CN mobile partners (WeChat, Alipay, UnionPay) with masked card BINs and hashes (i.e. 11111111111), eliminating card-level linkage. 
+Addresses are being manipulated at trader hubs in Chengdu (156-order cluster), Beijing (85-order cluster), and Hefei (137-order cluster). Patterns found using address substring clusters / IP_ADD_Item_Count to bypass per-address limits.
+Traders are using sequential emails (example: 16023220001@163.com through 16023220009@163.com) with sequentially numbered fake recipient names and illegitimate business names as address lines including "Piggy Convenience Store" , ”Woof Woof Fruit Shop" , “What is this thing”, etc. 
+Traders are inputting "Qualified Purchaser" as the recipient name to attempt to evade quantity limits. Shared phone numbers and billing emails link orders across different identities.
+
+With only 20/395 orders exceeding individually, the volume of trader activity identified exceeds what the Exceeded_Ind indicator is capturing, specifically due to address manipulation allowing traders to bypass per-datapoint limits across larger clusters. This activity coincides with reported elevated demand for Mac Mini in the CN market, driven by a surge in consumer interest around local AI applications. The Mac Mini's affordable price point and ability to run AI tools locally as a dedicated machine has made it a prime target for resellers.     
+Orders placed from a mix of foreign & domestic IPs with ISPs such as Fastly Inc, CHINANET, and M247 Europe SRL. Same IPs observed exceeding item counts across multiple accounts with different email handles. Trader A1 names are similar across orders with different outlook email handle variations (Wang Hei , Lai lajiao, ADGWI, Lin 2 Jiaying).
+
+Payments are stacked using multiple AGCD and APID methods. Addresses are being manipulated at known trader locations such as 2115 Armour Dr, 707 Carson Dr, and 88 Quigley Blvd. Patterns found using address substring clusters to bypass address manipulation.
+
+Traders shipping to NOMAD states such as DE & OR. Low profile accessory add on trader behavior observed including EarPods, USB C adapters, and Apple Watch.
+
+
